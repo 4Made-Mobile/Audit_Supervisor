@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" type="text/css" href="js/libs/ionic/css/ionic.min.css">
+	<title>Audit Supervisor</title>
+
+	<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+	<style>
+		@-ms-viewport { width: 100vw ; zoom: 100% ; }  @viewport { width: 100vw ; zoom: 100% ; }
+		@-ms-viewport { user-zoom: fixed ; }           @viewport { user-zoom: fixed ; }
+	</style>
+
+	<script src="cordova.js"></script>          <!-- phantom library, needed for Cordova api calls, added during build -->
+	<script src="js/app.js"></script>           <!-- recommended location of your JavaScript code relative to other JS files -->
+	<script src="xdk/init-dev.js"></script>     <!-- normalizes device and document ready events, see README for details -->
+
+	<link rel="stylesheet" href="css/app.css">
+	<link rel="stylesheet" href="css/index_main.less.css">
+	<link rel="stylesheet" href="css/ios_header.css">
+
+	<script src="js/libs/ionic/js/ionic.bundle.js"></script>
+	<script src="js/libs/jquery.min.js"></script>
+	<script src="js/index_init_services.js"></script>
+	<script src="js/init-app.js"></script>
+	<script src="js/marginal-position.js"></script>
+
+	<script src="js/libs/moment.min.js"></script>
+	<script src="js/libs/internet_connection.js"></script>
+	<script src="js/libs/tab/tab_slidebox.js"></script>
+	<link rel="stylesheet" href="js/libs/tab/tab_slidebox.css">
+	
+	<script src="js/auditService/login.js"></script>
+	<script src="js/auditService/webservice.js"></script>
+   
+</head>
+
+<body ng-app="myApp">
+
+    <div class="upage starting-hide" id="mainpage">
+
+			<div class="upage-outer fixed-header-footer">
+				<div class="ion-view">
+					<ion-content scroll="false">
+						<tab-slide-box tab="0">
+							<div class="tsb-icons">
+								<div class="tsb-ic-wrp">
+									<ion-scroll direction="x" class="tsb-hscroll">
+										<a href="javascript:;" id="aba-dia1"></a>
+										<a href="javascript:;" id="aba-dia2"></a>
+										<a href="javascript:;" id="aba-dia3"></a>
+										<a href="javascript:;" id="aba-dia4"></a>
+										<a href="javascript:;" id="aba-dia5"></a>
+										<a href="javascript:;" id="aba-dia6"></a>
+										<a href="javascript:;" id="aba-dia7"></a>
+									</ion-scroll>
+								</div>
+							</div>
+							<ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+								<ion-slide>
+									<ion-scroll id="container-dia1" class="aba-container" delegate-handle="slide1Scroll">
+										<button class="button button-block button-positive" onclick="logout()">
+										   Logout
+									    </button>
+										
+										<button class="button button-block button-positive" onclick="$('#mainpage').hide();$('#page_formulario').slideDown();
+">
+										   Página 2
+									    </button>
+									</ion-scroll>
+								</ion-slide>
+								<ion-slide>
+									<ion-scroll id="container-dia2" class="aba-container" delegate-handle="slide1Scroll">
+										
+									</ion-scroll>
+								</ion-slide>
+								<ion-slide>
+									<ion-scroll id="container-dia3" class="aba-container" delegate-handle="slide1Scroll">
+										
+									</ion-scroll>
+								</ion-slide>
+								<ion-slide>
+									<ion-scroll id="container-dia4" class="aba-container" delegate-handle="slide1Scroll">
+										
+									</ion-scroll>
+								</ion-slide>
+								<ion-slide>
+									<ion-scroll id="container-dia5" class="aba-container" delegate-handle="slide1Scroll">
+										
+									</ion-scroll>
+								</ion-slide>
+								<ion-slide>
+									<ion-scroll id="container-dia6" class="aba-container" delegate-handle="slide1Scroll">
+									
+									</ion-scroll>
+								</ion-slide>
+								<ion-slide>
+									<ion-scroll id="container-dia7" class="aba-container" delegate-handle="slide1Scroll">
+										
+									</ion-scroll>
+								</ion-slide>
+
+							</ion-slide-box>
+						</tab-slide-box>
+					</ion-content>
+            </div>
+
+				<ion-header-bar class="bar inner-element uib_w_1 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
+					<div class="buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button widget uib_w_3 d-margins ion ion-refresh icon-right" data-uib="ionic/button" data-ver="0"></button>
+					</div>
+					<h1 class="title title-custom">Audit Supervisor</h1>
+					<div class="buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button button-assertive widget uib_w_2 d-margins ion ion-flag icon-right" data-uib="ionic/button" data-ver="0"></button>
+					</div>
+				</ion-header-bar>
+			</div>
+		</div>
+
+		<div class="upage vertical-col left hidden" id="page_pendente"></div>
+
+      
+		<div class="upage vertical-col left hidden" id="page_formulario" style="background-color:blue;">ALOKA</div>
+
+      
+		<div class="upage vertical-col left" id="page_login">
+        	<div class="grid grid-pad col" style="top: 30%">					
+						
+				<label class="item item-input">
+					<span class="input-label">Login</span>
+					<input type="text" id="input_login_login">
+				</label>
+				<label class="item item-input">
+					<span class="input-label">Senha</span>
+					<input type="password" id="input_password_login">
+				</label>
+
+				<button class="button button-block button-positive" id="btn_entrar_login">
+					Entrar
+				</button>
+				
+			</div>
+		</div>
+
+</body>
+</html>

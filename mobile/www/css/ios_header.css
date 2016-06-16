@@ -1,0 +1,54 @@
+.platform-ios.platform-cordova.platform-ios5:not(.fullscreen) .bar-header:not(.bar-subheader){
+    height: 44px;
+}
+.platform-ios.platform-cordova.platform-ios5:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+    margin-top: 0px;
+}
+.platform-ios.platform-cordova.platform-ios5:not(.fullscreen) .has-header,
+.platform-ios.platform-cordova.platform-ios5:not(.fullscreen) .bar-subheader {
+    top: 44px;
+}
+
+.platform-ios.platform-cordova.platform-ios6:not(.fullscreen) .bar-header:not(.bar-subheader){
+    height: 44px;
+}
+.platform-ios.platform-cordova.platform-ios6:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+    margin-top: 0px;
+}
+.platform-ios.platform-cordova.platform-ios6:not(.fullscreen) .has-header,
+.platform-ios.platform-cordova.platform-ios6:not(.fullscreen) .bar-subheader {
+    top: 44px;
+}
+
+.platform-ios.platform-cordova.platform-ios7:not(.fullscreen) .bar-header:not(.bar-subheader){
+    height: 44px;
+}
+.platform-ios.platform-cordova.platform-ios7:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+    margin-top: 0px;
+}
+.platform-ios.platform-cordova.platform-ios7:not(.fullscreen) .has-header,
+.platform-ios.platform-cordova.platform-ios7:not(.fullscreen) .bar-subheader {
+    top: 44px;
+}
+
+.platform-ios.platform-cordova.platform-ios8:not(.fullscreen) .bar-header:not(.bar-subheader){
+    height: 44px;
+}
+.platform-ios.platform-cordova.platform-ios8:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+    margin-top: 0px;
+}
+.platform-ios.platform-cordova.platform-ios8:not(.fullscreen) .has-header,
+.platform-ios.platform-cordova.platform-ios8:not(.fullscreen) .bar-subheader {
+    top: 44px;
+}
+
+.platform-ios.platform-cordova.platform-ios9:not(.fullscreen) .bar-header:not(.bar-subheader){
+    height: 44px;
+}
+.platform-ios.platform-cordova.platform-ios9:not(.fullscreen) .bar-header:not(.bar-subheader) > * {
+    margin-top: 0px;
+}
+.platform-ios.platform-cordova.platform-ios9:not(.fullscreen) .has-header,
+.platform-ios.platform-cordova.platform-ios9:not(.fullscreen) .bar-subheader {
+    top: 44px;
+}
