@@ -5,7 +5,9 @@ $(document).on("click", "#btn_entrar_login", function(evt){
 function login_manager(){
 	if(!localStorage.getItem("key")){
         activate_page("#page_login");
-	}
+	} else {
+        lista_visita_download();
+    }
 }
 
 function login(){
@@ -13,6 +15,7 @@ function login(){
     $('#input_login_login').blur();
     $('#input_password_login').blur();
 	cordova.plugin.pDialog.init({cancelable:false,title:"Audit Supervisor",message:"Carregando informações..."});
+    
     var net = internet();
     var validate = login_validate();
 		
@@ -23,24 +26,24 @@ function login(){
         var senha_md5 = md5(senha);
         var imei = cordova.plugins.uid.IMEI;
         
-//        navigator.notification.alert(login+'\n'+senha+'\n'+senha_md5+'\n'+imei,'','','OK');
-        
 //        var data = {'login':login, 'senha':senha_md5, 'imei':imei};
+        var data = {'login':'berg', 'senha':'e10adc3949ba59abbe56e057f20f883e', 'imei':imei};
+		var login_request = webservice("login", data);
         
-//		var login = webservice(data);
-		var login = true;
-		if (login){
+		if (login_request["login"]){
 
-			localStorage.setItem("login","login");
-			localStorage.setItem("key","key");
-			localStorage.setItem("id","id");
+			localStorage.setItem("login",login);
+			localStorage.setItem("key",login_request["chave"]);
+			localStorage.setItem("id",login_request["id"]);
             
+//            navigator.notification.alert("Bem vindo "+login+". Sua Chave: "+login_request["chave"]+" e ID: "+login_request["id"]);
 			cordova.plugin.pDialog.dismiss();
             activate_page("#mainpage");
+            lista_visita_download();
             
 		} else{
 			cordova.plugin.pDialog.dismiss();		
-			navigator.notification.alert("Não foi possível entrar no sistema.\nLogin ou senha incorreto.","","Audit Supervisor","OK");
+			navigator.notification.alert("Não foi possível entrar no sistema.\nFalha ao se conectar.","","Audit Supervisor","OK");
 		}
 	} else{
 		cordova.plugin.pDialog.dismiss();	

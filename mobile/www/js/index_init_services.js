@@ -11,5 +11,3 @@
  angular.module('myApp',['ionic']).config(['$controllerProvider', function($controllerProvider) {
 	$controllerProvider.allowGlobals();
 }]);
-
-var app = angular.module('myApp', ['ionic', 'tabSlideBox'])

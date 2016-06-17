@@ -21,7 +21,7 @@
 
 		<script type="application/javascript" src="ionic/js/ionic.bundle.js"></script>
 		<script src="lib/jquery.min.js"></script>
-		<script src="lib/jquery-ui.min.js"></script>
+        <script src="lib/jquery-ui.min.js"></script>
 		<script src="js/libs/datepicker-pt-BR.js"></script>
 		<link rel="stylesheet" href="lib/jquery-ui.min.css">
 		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
@@ -39,6 +39,7 @@
 		<script src="js/libs/internet_connection.js"></script>
 
 		<script src="js/auditService/login.js"></script>
+		<script src="js/auditService/lista-visita.js"></script>
 		<script src="js/auditService/webservice.js"></script>
 
 	</head>
@@ -47,77 +48,79 @@
 
 		<div class="upage" id="mainpage">
 
-			<div class="upage-outer">
-				<div class="upage-content ac0" id="page_85_12">
-					<div class="grid grid-pad urow uib_row_3 row-height-3" data-uib="layout/row" data-ver="0">
-						<div class="col uib_col_4 col-0_12-12" data-uib="layout/col" data-ver="0">
-							<div class="widget-container content-area vertical-col">
+			<div class="upage-outer fixed-header-footer">
+				<div class="upage-content ac0" id="page_17_93">
+                    
+                    <div class="item row d-margins center">
+                      <div class="col col-25 d-margins-col-left b">
+                          <font size="4">Data</font>
+                      </div>
+                      <div class="col col-50 center">
+                          <input id="input_date_select" class="background-white input-calendar d-margins-col-right" type="text" placeholder="data" readonly="">
+                      </div>
+                      <div class="col col-25 center">
+                          <input id="icon_date_select" class="background-white icon-calendar d-margins-col-right" type="text" readonly="">
+                      </div>
+                    </div>
 
-                                <div class="item item-input item-input-inset">
-                                    <label style="background-color:white;" class="item-input-wrapper">
-                                        <span class="input-label">Data</span>
-                                        <input id="input_date_select" type="text" placeholder="data">
-                                    </label>
-                                    <button id="button_calendar" style="width:35px;height:35px;" class="button button-small button-positive ion ion-calendar" onclick="$('#input_date_select').datepicker('show');"></button>
-                                </div> 
-                                
-								<button class="button button-block button-positive" onclick="logout()">
-									Logout
-								</button>
+					<div id="list">
 
-								<button id="teste" class="button button-block button-positive" onclick="activate_page('#page_formulario')">
-									ALOKA
-								</button>
+                        <div class="list">
+                            <div class="item item-divider center b">Item Divider 1</div>
+                           <a class="item" href="#">Item 1</a>
+                           <a class="item" href="#">Item 2</a>
+                           <a class="item" href="#">Item 3</a>
+                    
+                           <a class="item" href="#">Item 4</a>
+                           <a class="item" href="#">Item 5</a>
+                           <a class="item" href="#">Item 6</a>
 
-							</div>
-						</div>
-						<span class="uib_shim"></span>
+                           <a class="item" href="#">Item 7</a>
+                           <a class="item" href="#">Item 8</a>
+                           <a class="item" href="#">Item 9</a>
+                        </div>
+                        
+						<button class="button button-block button-positive" onclick="logout()">
+							Logout
+						</button>
+
 					</div>
 
 				</div>
-
-				<ion-header-bar class="bar inner-element uib_w_1 bar-positive bar-header" data-uib="ionic/header" data-ver="0">
+				<ion-header-bar class="bar inner-element uib_w_1 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
 					<div class="buttons widget-container content-area horiz-area wrapping-col">
-						<button class="button widget uib_w_3 d-margins ion ion-refresh icon-right" data-uib="ionic/button" data-ver="0"></button>
+						<button class="button widget uib_w_3 ion ion-refresh icon-right" data-uib="ionic/button" data-ver="0"></button>
 					</div>
-					<h1 class="title title-custom"><center>Audit Supervisor</center></h1>
-					<div class="buttons widget-container content-area horiz-area wrapping-col">
-						<button class="button button-assertive widget uib_w_2 d-margins ion ion-flag icon-right" data-uib="ionic/button" data-ver="0"></button>
+					<h1 class="title title-custom b">Audit Supervisor</h1>
+                    <div class="hidden buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button button-assertive widget uib_w_3 ion ion-flag icon-right" data-uib="ionic/button" data-ver="0"></button>
 					</div>
+					
 				</ion-header-bar>
 			</div>
 		</div>
 
 		<div class="upage vertical-col left hidden" id="page_login">
-			<div class="grid grid-pad urow uib_row_4 row-height-4" data-uib="layout/row" data-ver="0">
-				<div class="col uib_col_5 col-0_12-12" data-uib="layout/col" data-ver="0">
-					<div class="widget-container content-area vertical-col">
+            
+            <img src="image/logo.png" class="logo">
 
-						<img src="image/logo.png" class="logo">
+            <form action="javascript:void(0);">
+                <label class="item item-input item-inside">
+                    <span class="input-label">Login</span>
+                    <input type="text" id="input_login_login" placeholder="login">
+                </label>
+                <span id="input_login_branco" class="hidden text-error">Login em branco.</span>
 
-						<form action="javascript:void(0);">
+                <label class="item item-input item-inside">
+                    <span class="input-label">Senha</span>
+                    <input type="password" id="input_password_login" placeholder="senha">
+                </label>
+                <span id="input_password_branco" class="hidden text-error">Senha em branco.</span>
 
-							<label class="item item-input item-inside">
-								<span class="input-label">Login</span>
-								<input type="text" id="input_login_login" placeholder="login">
-							</label>
-							<span id="input_login_branco" class="hidden text-error">Login em branco.</span>
-
-							<label class="item item-input item-inside">
-								<span class="input-label">Senha</span>
-								<input type="password" id="input_password_login" placeholder="senha">
-							</label>
-							<span id="input_password_branco" class="hidden text-error">Senha em branco.</span>
-
-							<button class="button button-block button-positive" id="btn_entrar_login">
-								Entrar
-							</button>
-
-						</form>
-
-					</div>
-				</div>
-			</div>
+                <button class="button button-block button-positive" id="btn_entrar_login">
+                    Entrar
+                </button>
+            </form>
 		</div>
 
 		<div class="upage vertical-col left hidden" id="page_formulario">
@@ -125,17 +128,17 @@
 			<div class="grid grid-pad urow uib_row_6 row-height-6" data-uib="layout/row" data-ver="0">
 				<div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
 					<div class="widget-container content-area vertical-col">
-                        
+
 						<input type="text" placeholder="ALOKA">
 
-                        <button class="button button-block button-positive" onclick="activate_page('#mainpage')">
-                            ALOKA
-                        </button>
-                        
+						<button class="button button-block button-positive" onclick="activate_page('#mainpage')">
+							ALOKA
+						</button>
+
 					</div>
 				</div>
 			</div>
-            
+
 		</div>
 
 		<div class="upage vertical-col left hidden" id="page_pendente">
@@ -143,10 +146,8 @@
 				<div class="col uib_col_8 col-0_12-12" data-uib="layout/col" data-ver="0">
 					<div class="widget-container content-area vertical-col">
 
-                        
-                        PENDENTES
-                        
-                        
+						PENDENTES
+
 					</div>
 				</div>
 			</div>
