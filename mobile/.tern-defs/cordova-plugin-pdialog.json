@@ -1,0 +1,14 @@
+{
+    "!name": "cordova-plugin-pdialog",
+    "!define": {
+        "!modules": {
+            "PDialog": {}
+        }
+    },
+    "!plugin-version": "2.0.1",
+    "cordova": {
+        "plugin": {
+            "pDialog": "!modules.PDialog"
+        }
+    }
+}

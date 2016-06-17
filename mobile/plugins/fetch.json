@@ -23,12 +23,12 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-compat": {
+    "cordova-plugin-geolocation": {
         "source": {
-            "type": "registry",
-            "id": "cordova-plugin-compat"
+            "type": "local",
+            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-geolocation"
         },
-        "is_top_level": false,
+        "is_top_level": true,
         "variables": {}
     },
     "cordova-plugin-dialogs": {
@@ -48,10 +48,11 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-geolocation": {
+    "org.hygieiasoft.cordova.uid": {
         "source": {
-            "type": "registry",
-            "id": "cordova-plugin-geolocation@2.2.0"
+            "type": "git",
+            "url": "https://github.com/hygieiasoft/cordova-plugin-uid",
+            "subdir": "."
         },
         "is_top_level": true,
         "variables": {}
