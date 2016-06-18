@@ -1,10 +1,10 @@
 function onAppReady() {
     $("#input_date_select").change(function() {
-        navigator.notification.alert("Handler for .change() called.");
+//        navigator.notification.alert("Handler for .change() called.");
     });
     $("#icon_date_select").change(function() {
         $("#input_date_select").val($("#icon_date_select").val());
-        navigator.notification.alert("Handler for .change() called.");
+//        navigator.notification.alert("Handler for .change() called.");
     });
     
     login_manager();

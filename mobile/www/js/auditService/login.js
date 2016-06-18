@@ -6,7 +6,8 @@ function login_manager(){
 	if(!localStorage.getItem("key")){
         activate_page("#page_login");
 	} else {
-        lista_visita_download();
+        downloader_list();
+        activate_page("#mainpage");
     }
 }
 
@@ -30,7 +31,7 @@ function login(){
         var data = {'login':'berg', 'senha':'e10adc3949ba59abbe56e057f20f883e', 'imei':imei};
 		var login_request = webservice("login", data);
         
-		if (login_request["login"]){
+		if (login_request["login"]!=""){
 
 			localStorage.setItem("login",login);
 			localStorage.setItem("key",login_request["chave"]);
@@ -38,12 +39,11 @@ function login(){
             
 //            navigator.notification.alert("Bem vindo "+login+". Sua Chave: "+login_request["chave"]+" e ID: "+login_request["id"]);
 			cordova.plugin.pDialog.dismiss();
-            activate_page("#mainpage");
-            lista_visita_download();
+            login_manager();
             
 		} else{
 			cordova.plugin.pDialog.dismiss();		
-			navigator.notification.alert("Não foi possível entrar no sistema.\nFalha ao se conectar.","","Audit Supervisor","OK");
+			navigator.notification.alert("Não foi possível entrar no sistema.\nFalha ao se conectar com o servidor.","","Audit Supervisor","OK");
 		}
 	} else{
 		cordova.plugin.pDialog.dismiss();	
@@ -58,12 +58,11 @@ function login(){
 
 function logout(){
 	cordova.plugin.pDialog.init({cancelable:false,title:"Audit Supervisor",message:"Saindo do sistema..."});
-		localStorage.setItem("login","");
-		localStorage.setItem("id","");
-		localStorage.setItem("key","");
-    
-        activate_page("#page_login");
-    
+//    localStorage.setItem("login","");
+//    localStorage.setItem("id","");
+//    localStorage.setItem("key","");
+    localStorage.clear();
+    activate_page("#page_login");
 	cordova.plugin.pDialog.dismiss();	
 }
 

@@ -61,8 +61,13 @@ body, .background-white {
     margin-left: 10px !important;
 }
 
-.d-margins-col-right{
+.d-margins-col-center{
     margin-left: -10px !important;
+}
+
+.d-margins-col-right{
+    text-align: right !important;
+    right: 10px !important;
 }
 
 .input-label{

@@ -39,7 +39,7 @@
 		<script src="js/libs/internet_connection.js"></script>
 
 		<script src="js/auditService/login.js"></script>
-		<script src="js/auditService/lista-visita.js"></script>
+		<script src="js/auditService/list_visit.js"></script>
 		<script src="js/auditService/webservice.js"></script>
 
 	</head>
@@ -50,95 +50,111 @@
 
 			<div class="upage-outer fixed-header-footer">
 				<div class="upage-content ac0" id="page_17_93">
-                    
-                    <div class="item row d-margins center">
-                      <div class="col col-25 d-margins-col-left b">
-                          <font size="4">Data</font>
-                      </div>
-                      <div class="col col-50 center">
-                          <input id="input_date_select" class="background-white input-calendar d-margins-col-right" type="text" placeholder="data" readonly="">
-                      </div>
-                      <div class="col col-25 center">
-                          <input id="icon_date_select" class="background-white icon-calendar d-margins-col-right" type="text" readonly="">
-                      </div>
+
+					<div class="item row d-margins center">
+						<div class="col col-25 d-margins-col-left b">
+							<font size="4">Data</font>
+						</div>
+						<div class="col col-50 center">
+							<input id="input_date_select" class="background-white input-calendar d-margins-col-center" type="text" placeholder="data" readonly="">
+						</div>
+						<div class="col col-25 center">
+							<input id="icon_date_select" class="background-white icon-calendar d-margins-col-center" type="text" readonly="">
+						</div>
+					</div>
+
+                    <div id="list" class="list">
+                        <div class="item item-divider center b">Item Divider 1</div>
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 1</a>
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 2</a>
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 3</a>
+
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 4</a>
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 5</a>
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 6</a>
+
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 7</a>
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 8</a>
+                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 9</a>
                     </div>
 
-					<div id="list">
-
-                        <div class="list">
-                            <div class="item item-divider center b">Item Divider 1</div>
-                           <a class="item" href="#">Item 1</a>
-                           <a class="item" href="#">Item 2</a>
-                           <a class="item" href="#">Item 3</a>
-                    
-                           <a class="item" href="#">Item 4</a>
-                           <a class="item" href="#">Item 5</a>
-                           <a class="item" href="#">Item 6</a>
-
-                           <a class="item" href="#">Item 7</a>
-                           <a class="item" href="#">Item 8</a>
-                           <a class="item" href="#">Item 9</a>
-                        </div>
-                        
-						<button class="button button-block button-positive" onclick="logout()">
-							Logout
-						</button>
-
-					</div>
+                    <button class="button button-block button-positive" onclick="logout()">
+                        Logout
+                    </button>
 
 				</div>
 				<ion-header-bar class="bar inner-element uib_w_1 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
 					<div class="buttons widget-container content-area horiz-area wrapping-col">
-						<button class="button widget uib_w_3 ion ion-refresh icon-right" data-uib="ionic/button" data-ver="0"></button>
+						<button id="btn_refresh" class="button widget uib_w_3 ion ion-refresh icon-right" data-uib="ionic/button" data-ver="0"></button>
 					</div>
 					<h1 class="title title-custom b">Audit Supervisor</h1>
-                    <div class="hidden buttons widget-container content-area horiz-area wrapping-col">
+					<div class="hidden buttons widget-container content-area horiz-area wrapping-col">
 						<button class="button button-assertive widget uib_w_3 ion ion-flag icon-right" data-uib="ionic/button" data-ver="0"></button>
 					</div>
-					
+
 				</ion-header-bar>
 			</div>
 		</div>
 
 		<div class="upage vertical-col left hidden" id="page_login">
-            
-            <img src="image/logo.png" class="logo">
 
-            <form action="javascript:void(0);">
-                <label class="item item-input item-inside">
-                    <span class="input-label">Login</span>
-                    <input type="text" id="input_login_login" placeholder="login">
-                </label>
-                <span id="input_login_branco" class="hidden text-error">Login em branco.</span>
+			<img src="image/logo.png" class="logo">
 
-                <label class="item item-input item-inside">
-                    <span class="input-label">Senha</span>
-                    <input type="password" id="input_password_login" placeholder="senha">
-                </label>
-                <span id="input_password_branco" class="hidden text-error">Senha em branco.</span>
+			<form action="javascript:void(0);">
+				<label class="item item-input item-inside">
+					<span class="input-label">Login</span>
+					<input type="text" id="input_login_login" placeholder="login">
+				</label>
+				<span id="input_login_branco" class="hidden text-error">Login em branco.</span>
 
-                <button class="button button-block button-positive" id="btn_entrar_login">
-                    Entrar
-                </button>
-            </form>
+				<label class="item item-input item-inside">
+					<span class="input-label">Senha</span>
+					<input type="password" id="input_password_login" placeholder="senha">
+				</label>
+				<span id="input_password_branco" class="hidden text-error">Senha em branco.</span>
+
+				<button class="button button-block button-positive" id="btn_entrar_login">
+					Entrar
+				</button>
+			</form>
 		</div>
 
-		<div class="upage vertical-col left hidden" id="page_formulario">
+		<div class="upage hidden" id="page_formulario">
 
-			<div class="grid grid-pad urow uib_row_6 row-height-6" data-uib="layout/row" data-ver="0">
-				<div class="col uib_col_7 col-0_12-12" data-uib="layout/col" data-ver="0">
-					<div class="widget-container content-area vertical-col">
+			<div class="upage-outer fixed-header-footer">
+				<div class="upage-content ac0 content-area vertical-col left" id="page_77_90">
+                
+                    <div class="row" style="background-color: #f5f5f5">
+                        <div class="col col-50 center b">
+                            <font size="3">Vendedor</font>
+                        </div>
 
-						<input type="text" placeholder="ALOKA">
-
-						<button class="button button-block button-positive" onclick="activate_page('#mainpage')">
-							ALOKA
-						</button>
-
+                        <div class="col col-50 center b">
+                            <font size="3">Última Visita</font>
+                        </div>
+                    </div>
+                    
+                    <div class="row item center">
+						<div class="col col-50 center" style="top:2px">
+                            Vandemberg
+						</div>
+                        
+						<div class="col col-50 center" style="top:2px">
+                            24 Dez, 2016
+						</div>
 					</div>
-				</div>
+                    
+                    
+                </div>
+                
+				<ion-header-bar class="bar inner-element uib_w_4 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
+					<div class="buttons widget-container content-area horiz-area wrapping-col">
+						<button id="btn_form_voltar" onclick="activate_page('#mainpage')" class="button widget uib_w_3 ion ion-ios7-arrow-back icon-left b" data-uib="ionic/button" data-ver="0">&nbsp;Voltar</button>
+					</div>
+					<h1 class="title title-custom b">Audit Supervisor</h1>
+					<div class="buttons widget-container content-area horiz-area wrapping-col"></div>
+				</ion-header-bar>
 			</div>
-
 		</div>
 
 		<div class="upage vertical-col left hidden" id="page_pendente">
