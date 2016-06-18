@@ -29,7 +29,7 @@
 		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
 
 		<script type="application/javascript" src="js/index_init_services.js"></script>
-		<!--		<script type="application/javascript" src="js/index_user_scripts.js"></script>-->
+		<script type="application/javascript" src="js/index_user_scripts.js"></script>
 		<script src="js/init-app.js"></script>
 		<script type="application/javascript" src="marginal/marginal-position.js"></script>
 		<script type="application/javascript" src="xdk/ad/ionic_subpage.js"></script>
@@ -56,31 +56,31 @@
 							<font size="4">Data</font>
 						</div>
 						<div class="col col-50 center">
-							<input id="input_date_select" class="background-white input-calendar d-margins-col-center" type="text" placeholder="data" readonly="">
+							<input id="input_date_select" class="input-calendar d-margins-col-center" type="text" placeholder="data" readonly="">
 						</div>
 						<div class="col col-25 center">
-							<input id="icon_date_select" class="background-white icon-calendar d-margins-col-center" type="text" readonly="">
+							<input id="icon_date_select" class="icon-calendar d-margins-col-center" type="text" readonly="">
 						</div>
 					</div>
 
-                    <div id="list" class="list">
-                        <div class="item item-divider center b">Item Divider 1</div>
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 1</a>
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 2</a>
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 3</a>
+					<div id="list" class="list">
+						<div class="item item-divider center b">Item Divider 1</div>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 1</a>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 2</a>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 3</a>
 
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 4</a>
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 5</a>
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 6</a>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 4</a>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 5</a>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 6</a>
 
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 7</a>
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 8</a>
-                        <a class="item" href="#" onclick="activate_page('#page_formulario')">Item 9</a>
-                    </div>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 7</a>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 8</a>
+						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 9</a>
+					</div>
 
-                    <button class="button button-block button-positive" onclick="logout()">
-                        Logout
-                    </button>
+					<button class="button button-block button-positive" onclick="logout()">
+						Logout
+					</button>
 
 				</div>
 				<ion-header-bar class="bar inner-element uib_w_1 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
@@ -105,13 +105,13 @@
 					<span class="input-label">Login</span>
 					<input type="text" id="input_login_login" placeholder="login">
 				</label>
-				<span id="input_login_branco" class="hidden text-error">Login em branco.</span>
+				<span id="input_login_branco" class="hidden text-error" style="margin-left:15px;">Login em branco.</span>
 
 				<label class="item item-input item-inside">
 					<span class="input-label">Senha</span>
 					<input type="password" id="input_password_login" placeholder="senha">
 				</label>
-				<span id="input_password_branco" class="hidden text-error">Senha em branco.</span>
+				<span id="input_password_branco" class="hidden text-error" style="margin-left:15px;">Senha em branco.</span>
 
 				<button class="button button-block button-positive" id="btn_entrar_login">
 					Entrar
@@ -121,39 +121,89 @@
 
 		<div class="upage hidden" id="page_formulario">
 
-			<div class="upage-outer fixed-header-footer">
-				<div class="upage-content ac0 content-area vertical-col left" id="page_77_90">
-                
-                    <div class="row" style="background-color: #f5f5f5">
-                        <div class="col col-50 center b">
-                            <font size="3">Vendedor</font>
-                        </div>
-
-                        <div class="col col-50 center b">
-                            <font size="3">Última Visita</font>
-                        </div>
-                    </div>
-                    
-                    <div class="row item center">
-						<div class="col col-50 center" style="top:2px">
-                            Vandemberg
-						</div>
-                        
-						<div class="col col-50 center" style="top:2px">
-                            24 Dez, 2016
-						</div>
+			<ion-content>
+				<div class="row" style="background-color: #f5f5f5">
+					<div class="col col-50 center b">
+						<font size="3">Vendedor</font>
 					</div>
-                    
-                    
-                </div>
-                
+					<div class="col col-50 center b">
+						<font size="3">Último Coach</font>
+					</div>
+				</div>
+
+				<div class="row item center">
+					<div class="col col-50 center" style="top:2px">
+						Vandemberg
+					</div>
+					<div class="col col-50 center" style="top:2px">
+						24 Dez, 2016
+					</div>
+				</div>
+
+				<div id="asks">
+
+					<div class="item item-toggle">
+						<textarea class="expand" readonly="">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.</textarea>
+						<label class="toggle toggle-balanced" style="margin-top:-20px;top:50%;">
+							<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+					</div>
+
+					<div class="item item-toggle">
+						<textarea class="expand" readonly="">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.</textarea>
+						<label class="toggle toggle-balanced" style="margin-top:-20px;top:50%;">
+							<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+					</div>
+
+					<div class="item item-toggle">
+						<textarea class="expand" readonly="">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.</textarea>
+						<label class="toggle toggle-balanced" style="margin-top:-20px;top:50%;">
+							<input type="checkbox">
+							<div class="track">
+								<div class="handle"></div>
+							</div>
+						</label>
+					</div>
+
+					<div class="item">
+						<textarea class="expand" readonly="">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.</textarea>
+						<textarea class="autosize d-margins-textarea-descritiva" rows="2" placeholder="Descrição"></textarea>
+						<span class="text-error">Campo obrigatório.</span>
+					</div>
+
+					<div class="item">
+						<textarea class="expand" readonly="">At w3schools.com you will learn how to make a website. We offer free tutorials in all web development technologies.</textarea>
+						<textarea class="autosize d-margins-textarea-descritiva" rows="2" placeholder="Descrição"></textarea>
+						<span class="text-error">Campo obrigatório.</span>
+					</div>
+				</div>
+			</ion-content>
+
+			<div class="upage-outer fixed-header-footer">
 				<ion-header-bar class="bar inner-element uib_w_4 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
 					<div class="buttons widget-container content-area horiz-area wrapping-col">
-						<button id="btn_form_voltar" onclick="activate_page('#mainpage')" class="button widget uib_w_3 ion ion-ios7-arrow-back icon-left b" data-uib="ionic/button" data-ver="0">&nbsp;Voltar</button>
+						<button id="btn_form_voltar" onclick="activate_page('#mainpage')" class="button widget uib_w_3 ion ion-ios7-arrow-back icon-left b" data-uib="ionic/button" data-ver="0"></button>
 					</div>
-					<h1 class="title title-custom b">Audit Supervisor</h1>
+					<h1 class="title title-custom b">Formulário</h1>
 					<div class="buttons widget-container content-area horiz-area wrapping-col"></div>
 				</ion-header-bar>
+
+				<ion-footer-bar class="bar inner-element uib_w_1 bar-positive bar-footer" data-uib="ionic/footer" data-ver="0">
+					<div class="buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button widget uib_w_2 icon b ion ion-close icon-left" data-uib="ionic/button" data-ver="0">&nbsp;Limpar</button>
+					</div>
+					<h1 class="title"></h1>
+					<div class="buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button widget uib_w_3 icon b ion ion-checkmark icon-right" data-uib="ionic/button" data-ver="0">Finalizar&nbsp;</button>
+					</div>
+				</ion-footer-bar>
 			</div>
 		</div>
 
@@ -168,6 +218,7 @@
 				</div>
 			</div>
 		</div>
+		<div class="upage vertical-col left hidden" id="page_feedback"></div>
 
 	</body>
 
