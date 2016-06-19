@@ -21,7 +21,7 @@
 
 		<script type="application/javascript" src="ionic/js/ionic.bundle.js"></script>
 		<script src="lib/jquery.min.js"></script>
-        <script src="lib/jquery-ui.min.js"></script>
+		        <script src="lib/jquery-ui.min.js"></script>
 		<script src="js/libs/datepicker-pt-BR.js"></script>
 		<link rel="stylesheet" href="lib/jquery-ui.min.css">
 		<link rel="stylesheet" type="text/css" href="css/index_main.less.css" class="main-less">
@@ -37,6 +37,7 @@
 		<script src="js/libs/moment.min.js"></script>
 		<script src="js/libs/md5.min.js"></script>
 		<script src="js/libs/internet_connection.js"></script>
+		<script src="js/backbutton.js"></script>
 
 		<script src="js/auditService/login.js"></script>
 		<script src="js/auditService/list_visit.js"></script>
@@ -44,7 +45,7 @@
 
 	</head>
 
-	<body ng-app="myApp">
+	<body ng-app="myApp" ng-controller="MainCtrl">
 
 		<div class="upage" id="mainpage">
 
@@ -63,6 +64,14 @@
 						</div>
 					</div>
 
+					<button class="button button-block button-positive" onclick="logout()">
+						Logout
+					</button>
+
+					<button class="button button-block button-positive" onclick="activate_page('#page_feedback')">
+						Feedback
+					</button>
+
 					<div id="list" class="list">
 						<div class="item item-divider center b">Item Divider 1</div>
 						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 1</a>
@@ -77,10 +86,6 @@
 						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 8</a>
 						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 9</a>
 					</div>
-
-					<button class="button button-block button-positive" onclick="logout()">
-						Logout
-					</button>
 
 				</div>
 				<ion-header-bar class="bar inner-element uib_w_1 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
@@ -121,7 +126,7 @@
 
 		<div class="upage hidden" id="page_formulario">
 
-			<ion-content>
+			<ion-content delegate-handle="mainScroll">
 				<div class="row" style="background-color: #f5f5f5">
 					<div class="col col-50 center b">
 						<font size="3">Vendedor</font>
@@ -189,15 +194,15 @@
 			<div class="upage-outer fixed-header-footer">
 				<ion-header-bar class="bar inner-element uib_w_4 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
 					<div class="buttons widget-container content-area horiz-area wrapping-col">
-						<button id="btn_form_voltar" onclick="activate_page('#mainpage')" class="button widget uib_w_3 ion ion-ios7-arrow-back icon-left b" data-uib="ionic/button" data-ver="0"></button>
+						<button onclick="activate_page('#mainpage')" class="button widget uib_w_3 ion ion-chevron-left icon-only" style="width:42px;" data-uib="ionic/button" data-ver="0"></button>
 					</div>
 					<h1 class="title title-custom b">Formulário</h1>
 					<div class="buttons widget-container content-area horiz-area wrapping-col"></div>
 				</ion-header-bar>
 
 				<ion-footer-bar class="bar inner-element uib_w_1 bar-positive bar-footer" data-uib="ionic/footer" data-ver="0">
-					<div class="buttons widget-container content-area horiz-area wrapping-col">
-						<button class="button widget uib_w_2 icon b ion ion-close icon-left" data-uib="ionic/button" data-ver="0">&nbsp;Limpar</button>
+					<div id="limparform" class="buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button widget uib_w_2 icon b ion ion-close icon-left" data-uib="ionic/button" data-ver="0" ng-click="scrollMainToTop()">&nbsp;Limpar</button>
 					</div>
 					<h1 class="title"></h1>
 					<div class="buttons widget-container content-area horiz-area wrapping-col">
@@ -218,7 +223,69 @@
 				</div>
 			</div>
 		</div>
-		<div class="upage vertical-col left hidden" id="page_feedback"></div>
+
+		<div class="upage hidden" id="page_feedback">
+            
+            <ion-content delegate-handle="mainScroll">
+                <div class="list">
+				    <div class="item item-divider center b">1. Abertura</div>
+                    <div class="item">
+						<textarea class="autosize d-margins-textarea-descritiva" rows="3" placeholder="Abertura"></textarea>
+					</div>
+						
+                    <div class="item item-divider center b">2. Descritivo</div>
+                        <div class="item item-divider center">Quando</div>
+                        <div class="item">
+                            <textarea class="autosize d-margins-textarea-descritiva" rows="3" placeholder="Quando"></textarea>
+                        </div>
+                    
+                        <div class="item item-divider center">Ocorrência</div>
+                        <div class="item">
+                            <textarea class="autosize d-margins-textarea-descritiva" rows="3" placeholder="Ocorrência"></textarea>
+                        </div>
+                    
+                        <div class="item item-divider center">Impacto</div>
+                        <div class="item">
+                            <textarea class="autosize d-margins-textarea-descritiva" rows="3" placeholder="Impacto"></textarea>
+                        </div>
+                    
+                        <div class="item item-divider center">Consequência</div>
+                        <div class="item">
+                            <textarea class="autosize d-margins-textarea-descritiva" rows="3" placeholder="Consequência"></textarea>
+                        </div>
+                    
+                    <div class="item item-divider center b">3. Acordos</div>
+                    <div class="item">
+						<textarea class="autosize d-margins-textarea-descritiva" rows="3" placeholder="Acordos"></textarea>
+					</div>
+                    
+                    <div class="item item-divider center b">4. Conclusão</div>
+                    <div class="item">
+						<textarea class="autosize d-margins-textarea-descritiva" rows="3" placeholder="Conclusão"></textarea>
+					</div>
+				</div>
+			</ion-content>
+  
+			<div class="upage-outer fixed-header-footer">
+				<div class="upage-content ac0 content-area vertical-col left"></div>
+				<ion-header-bar class="bar inner-element uib_w_5 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
+					<div class="buttons widget-container content-area horiz-area wrapping-col">
+						<button onclick="activate_page('#mainpage')" class="button widget uib_w_6 ion ion-chevron-left icon-only" style="width:42px;" data-uib="ionic/button" data-ver="0"></button>
+					</div>
+					<h1 class="title b">Feedback</h1>
+					<div class="buttons widget-container content-area horiz-area wrapping-col"></div>
+				</ion-header-bar>
+				<ion-footer-bar class="bar inner-element uib_w_7 bar-positive bar-footer" data-uib="ionic/footer" data-ver="0">
+					<div id="limparfeedback" class="buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button widget uib_w_8 icon b ion ion-close icon-left" data-uib="ionic/button" data-ver="0" ng-click="scrollMainToTop()">&nbsp;Limpar</button>
+					</div>
+					<h1 class="title"></h1>
+					<div class="buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button widget uib_w_9 icon b ion ion-checkmark icon-right" data-uib="ionic/button" data-ver="0">Finalizar&nbsp;</button>
+					</div>
+				</ion-footer-bar>
+			</div>
+		</div>
 
 	</body>
 

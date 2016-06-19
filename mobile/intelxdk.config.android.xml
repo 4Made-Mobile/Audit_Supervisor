@@ -23,6 +23,7 @@
 <intelxdk:plugin intelxdk:name="Notification" intelxdk:value="cordova-plugin-dialogs" intelxdk:version="1.2.0" intelxdk:checksum="1af74557" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="pDialog" intelxdk:value="cordova-plugin-pdialog" intelxdk:version="2.0.1" intelxdk:checksum="3cf3996a" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="UID" intelxdk:value="org.hygieiasoft.cordova.uid" intelxdk:version="1.1.0" intelxdk:checksum="1f961589" intelxdk:type="file"/>
+<intelxdk:plugin intelxdk:name="Keyboard" intelxdk:value="com.ionic.keyboard" intelxdk:version="2.0.1" intelxdk:checksum="42252d7a" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="Cordova Network Whitelist Plugin (added by Intel XDK)" intelxdk:value="cordova-plugin-whitelist" intelxdk:version="1.2.1"/>
 <preference name="android-minSdkVersion" value="14"/>
 <preference name="android-targetSdkVersion" value="21"/>

@@ -37,3 +37,32 @@ function expandTextarea() {
         }, false);
     }
 }
+
+function limpar_campos(){
+    
+    cordova.plugins.Keyboard.close();
+    
+    $('textarea').each(function() {
+        $(this).blur();
+    });
+    
+    $('input').each(function() {
+        $(this).blur();
+    });
+    
+    $('textarea').each(function() {
+        if($(this).hasClass('autosize')){
+            $(this).val("");
+        }
+    });
+    
+    $('[type=checkbox]').each(function() {
+        $(this).prop("checked", false);
+    });
+}
+
+function MainCtrl($scope, $ionicScrollDelegate) {
+    $scope.scrollMainToTop = function() {
+        $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop();
+    };
+}

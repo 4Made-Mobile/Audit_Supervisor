@@ -98,10 +98,6 @@ body, textarea, input {
     font-weight: bold !important;
 }
 
-.bar-footer{
-    margin-bottom: -2px !important;
-}
-
 .center{
     display: -webkit-box;
     display: -moz-box;

@@ -27,6 +27,9 @@
         },
         "org.hygieiasoft.cordova.uid": {
             "PACKAGE_NAME": "HelloCordova"
+        },
+        "com.ionic.keyboard": {
+            "PACKAGE_NAME": "HelloCordova"
         }
     },
     "dependent_plugins": {}

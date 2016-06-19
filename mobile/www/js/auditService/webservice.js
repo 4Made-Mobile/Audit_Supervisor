@@ -12,7 +12,7 @@ function webservice(option, data){
 		contentType: "application/json", 		
         dataType: "json", 
 		processdata: true,
-		success: function(resp){result = resp}, 
+		success: function(resp){result = resp;}, 
 		error: function(resp){result = resp;}
 	});
 

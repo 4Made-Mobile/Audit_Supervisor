@@ -6,8 +6,8 @@ function login_manager(){
 	if(!localStorage.getItem("key")){
         activate_page("#page_login");
 	} else {
-        downloader_list();
         activate_page("#mainpage");
+        downloader_list("starting");
     }
 }
 
@@ -39,7 +39,8 @@ function login(){
             
 //            navigator.notification.alert("Bem vindo "+login+". Sua Chave: "+login_request["chave"]+" e ID: "+login_request["id"]);
 			cordova.plugin.pDialog.dismiss();
-            login_manager();
+            activate_page("#mainpage");
+            downloader_list();
             
 		} else{
 			cordova.plugin.pDialog.dismiss();		
@@ -49,9 +50,9 @@ function login(){
 		cordova.plugin.pDialog.dismiss();	
         
         if(!net){
-            navigator.notification.alert("Não foi possível entrar no sistema.\nVerifique sua conexão com a internet.","","Audit Supervisor","OK");
+            navigator.notification.alert("Não foi possível acessar o servidor.\nVerifique sua conexão com a internet.","","Audit Supervisor","OK");
         } else if(!validate){
-            navigator.notification.alert("Não foi possível entrar no sistema.\nVerifique seu login e/ou senha.","","Audit Supervisor","OK");
+            navigator.notification.alert("Erro no formulário.\nVerifique seu login e/ou senha.","","Audit Supervisor","OK");
         }
 	}
 }
