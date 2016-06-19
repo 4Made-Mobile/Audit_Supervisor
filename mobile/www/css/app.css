@@ -76,17 +76,42 @@ body, textarea, input {
 
 .input-label{
     margin-right: -10% !important;
+    color: rgba(0,0,0,0.7) !important;
 }
 
 .item-inside{
     margin-top: 3% !important;
+    left: -8px !important;
+    display: block;
+/*    text-align: center !important;*/
 }
 
-.logo{
-    width: 40%;
-    height: auto;
-    margin-bottom: 25px;
+.login-position{
+    margin-top: 50%;
 }
+
+.label-transparent, .input-transparent{
+    background: transparent !important;
+    border: none !important; 
+}
+
+.input-transparent{
+    border: 0 !important;
+    outline: 0 !important;
+    border-bottom: 1px solid rgba(0,0,0,0.5) !important;
+}
+
+.background{
+  background: url("../image/background.png") no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.input-transparent::-webkit-input-placeholder  { color: rgba(0,0,0,0.5) !important; }
+.input-transparent::-moz-placeholder { color: rgba(0,0,0,0.5)  !important; }
+.input-transparent::-moz-placeholder { color: rgba(0,0,0,0.5)  !important; }
 
 .text-error{
     font-size: 12px;
@@ -129,9 +154,22 @@ body, textarea, input {
     align-items: center;
 }
 
+.bar-positive, .bar-positive .button-positive, .button-positive, .tabs-striped.tabs-positive .tabs{
+    border-color: #47a6ad !important;
+    background-color: #54c4cc !important;
+}
+
+.button.button-positive.active, .button.button-positive.activated {
+    background-color: #41989e !important;
+}
+
 /*Tom de vermelho*/
 /*
 .bar-assertive, .bar-assertive .button-assertive, .button-assertive, .tabs-striped.tabs-assertive .tabs{
     border-color: #d61b25 !important;
     background-color: #ee1e29 !important;
-}*/
+}
+
+.button.button-assertive.active, .button.button-assertive.activated {
+    background-color: #2c2f91 !important;
+} */

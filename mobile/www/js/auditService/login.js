@@ -30,8 +30,8 @@ function login(){
 //        var data = {'login':login, 'senha':senha_md5, 'imei':imei};
         var data = {'login':'berg', 'senha':'e10adc3949ba59abbe56e057f20f883e', 'imei':imei};
 		var login_request = webservice("login", data);
-        
-		if (login_request["login"]!=""){
+                
+		if (login_request.length>0){
 
 			localStorage.setItem("login",login);
 			localStorage.setItem("key",login_request["chave"]);

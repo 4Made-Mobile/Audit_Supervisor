@@ -16,6 +16,14 @@
 <allow-intent href="mailto:*"/>
 <allow-intent href="geo:*"/>
 <allow-intent href="market:*"/>
+<icon platform="android" src="image/android/icon/48x48.png" density="mdpi" width="48" height="48"/>
+<icon platform="android" src="image/android/icon/72x72.png" density="hdpi" width="72" height="72"/>
+<icon platform="android" src="image/android/icon/96x96.png" density="xhdpi" width="96" height="96"/>
+<icon platform="android" src="image/android/icon/36x36.png" density="ldpi" width="36" height="36"/>
+<splash platform="android" src="image/android/splash/320x426.png" density="ldpi" width="320" height="426" orientation="portrait"/>
+<splash platform="android" src="image/android/splash/320x470.png" density="mdpi" width="320" height="470" orientation="portrait"/>
+<splash platform="android" src="image/android/splash/480x640.png" density="hdpi" width="480" height="640" orientation="portrait"/>
+<splash platform="android" src="image/android/splash/720x960.png" density="xhdpi" width="720" height="960" orientation="portrait"/>
 <intelxdk:plugin intelxdk:name="StatusBar" intelxdk:value="cordova-plugin-statusbar" intelxdk:version="2.1.0" intelxdk:checksum="858cc583" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="Device" intelxdk:value="cordova-plugin-device" intelxdk:version="1.1.1" intelxdk:checksum="927290ca" intelxdk:type="file"/>
 <intelxdk:plugin intelxdk:name="Splashscreen" intelxdk:value="cordova-plugin-splashscreen" intelxdk:version="3.2.0" intelxdk:checksum="452a4659" intelxdk:type="file"/>
@@ -31,18 +39,19 @@
 <preference name="android-signed" value="true"/>
 <platform name="android">
 <preference name="Orientation" value="portrait"/></platform>
+<preference name="splashscreen" value="splash"/>
 <!--creationInfo:{"src":"jsapp/template-blank-cordova-ad-project/sample.zip","projectTypeName":"com.intel.xdk.projecttype.jsapp"}-->
 <preference name="debuggable" value="false"/>
 <platform name="ios">
     <!-- below requires the splash screen plugin -->
     <!-- docs: https://github.com/apache/cordova-plugin-splashscreen -->
-    <preference name="AutoHideSplashScreen" value="false"/>
+    <preference name="AutoHideSplashScreen" value="true"/>
     <preference name="FadeSplashScreen" value="true"/>
     <preference name="FadeSplashScreenDuration" value="1600"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
     <preference name="SplashShowOnlyFirstTime" value="false"/>
-    <preference name="SplashScreenDelay" value="1000"/>
+    <preference name="SplashScreenDelay" value="6500"/>
     <preference name="orientation" value="portrait"/>
 
     <!-- below requires the status bar plugin -->
@@ -55,13 +64,13 @@
 <platform name="android">
     <!-- below requires the splash screen plugin -->
     <!-- docs: https://github.com/apache/cordova-plugin-splashscreen -->
-    <preference name="AutoHideSplashScreen" value="false"/>
+    <preference name="AutoHideSplashScreen" value="true"/>
     <preference name="FadeSplashScreen" value="true"/>
     <preference name="FadeSplashScreenDuration" value="1600"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
     <preference name="SplashShowOnlyFirstTime" value="false"/>
-    <preference name="SplashScreenDelay" value="1000"/>
+    <preference name="SplashScreenDelay" value="6500"/>
     <preference name="orientation" value="portrait"/>
 </platform>
 <intelxdk:crosswalk xmlns:intelxdk="http://xdk.intel.com/ns/v1" xwalk-command-line="--disable-pull-to-refresh-effect"/>

@@ -24,13 +24,13 @@
 <platform name="ios">
     <!-- below requires the splash screen plugin -->
     <!-- docs: https://github.com/apache/cordova-plugin-splashscreen -->
-    <preference name="AutoHideSplashScreen" value="false"/>
+    <preference name="AutoHideSplashScreen" value="true"/>
     <preference name="FadeSplashScreen" value="true"/>
     <preference name="FadeSplashScreenDuration" value="1600"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
     <preference name="SplashShowOnlyFirstTime" value="false"/>
-    <preference name="SplashScreenDelay" value="1000"/>
+    <preference name="SplashScreenDelay" value="6500"/>
     <preference name="orientation" value="portrait"/>
 
     <!-- below requires the status bar plugin -->
@@ -43,13 +43,13 @@
 <platform name="android">
     <!-- below requires the splash screen plugin -->
     <!-- docs: https://github.com/apache/cordova-plugin-splashscreen -->
-    <preference name="AutoHideSplashScreen" value="false"/>
+    <preference name="AutoHideSplashScreen" value="true"/>
     <preference name="FadeSplashScreen" value="true"/>
     <preference name="FadeSplashScreenDuration" value="1600"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
     <preference name="SplashMaintainAspectRatio" value="true"/>
     <preference name="SplashShowOnlyFirstTime" value="false"/>
-    <preference name="SplashScreenDelay" value="1000"/>
+    <preference name="SplashScreenDelay" value="6500"/>
     <preference name="orientation" value="portrait"/>
 </platform>
 <intelxdk:crosswalk xmlns:intelxdk="http://xdk.intel.com/ns/v1" xwalk-command-line="--disable-pull-to-refresh-effect"/>
