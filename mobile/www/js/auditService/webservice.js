@@ -10,7 +10,7 @@ function webservice(option, data){
         async: false,
     	data: data,
 		contentType: "application/json", 		
-        dataType: "json", 
+        dataType: "json",
 		processdata: true,
 		success: function(resp){result = resp;}, 
 		error: function(resp){result = resp;}
@@ -23,9 +23,9 @@ function webservice(option, data){
 function url_option(option){
     
     if(option=="login"){
-        return "http://cardeal.beanteam.com.br/webservice/login";
+        return "http://cardealdistribuidora.web2409.uni5.net/supervisor/webservice/login";
     } else if(option=="lista-visita"){
-        return "http://cardeal.beanteam.com.br/webservice/lista-visita";
+        return "http://cardealdistribuidora.web2409.uni5.net/supervisor/webservice/lista-visita";
     } else if(option=="resposta"){
         return "";
     }

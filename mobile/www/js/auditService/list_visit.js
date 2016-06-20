@@ -12,20 +12,41 @@ function downloader_list(starting){
             
             var data = {'supervisor_id':localStorage.getItem("id"), 'chave':localStorage.getItem("key")};
             var list_request = webservice("lista-visita", data);
-
-            if (list_request.length>0){
+            
+//            navigator.notification.alert(list_request[0]);
+            if (list_request[0]=="true"){
+                
                 localStorage.setItem("list", "");
-                localStorage.setItem("list", list_request);
+                localStorage.setItem("list", JSON.stringify(list_request));
                 cordova.plugin.pDialog.dismiss();
+                list_generator();
+            
+            } else if (list_request[0]=="false"){
+                cordova.plugin.pDialog.dismiss();
+                navigator.notification.alert("Não foi possível sincronizar com o sistema.","","Ops!","OK");
 
             } else{
                 cordova.plugin.pDialog.dismiss();		
-                navigator.notification.alert("Não foi possível carregar os dados.\nFalha ao se conectar com o servidor.","","Audit Supervisor","OK");
+                navigator.notification.alert("Não foi possível entrar no sistema.","","Falha ao se conectar com o servidor","OK");
             }
             
         } else{
             cordova.plugin.pDialog.dismiss();	
-            navigator.notification.alert("Não foi possível acessar o servidor.\nVerifique sua conexão com a internet.","","Audit Supervisor","OK");            
+            navigator.notification.alert("Não foi possível acessar o servidor.","","Falha na conexão","OK");            
         }
+        
+    } else {
+        list_generator();
     }
+}
+
+function list_generator(){
+    
+    var list = JSON.parse(localStorage.getItem("list"));
+    
+//    navigator.notification.alert(localStorage.getItem("list"));
+    navigator.notification.alert(list[1][0]["data_inicial"]);
+    
+    
+    
 }

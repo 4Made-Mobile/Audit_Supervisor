@@ -5,9 +5,12 @@ $(document).on("click", "#btn_entrar_login", function(evt){
 function login_manager(){
 	if(!localStorage.getItem("key")){
         activate_page("#page_login");
+        setTimeout(function(){app.hideSplashScreen();}, 2000);
 	} else {
+        app.hideSplashScreen();
         activate_page("#mainpage");
         downloader_list("starting");
+        navigator.notification.alert("Para melhor experiência com o sistema, garanta que seu GPS esteja ativo!","","Audit Supervisor","OK");
     }
 }
 
@@ -30,29 +33,36 @@ function login(){
 //        var data = {'login':login, 'senha':senha_md5, 'imei':imei};
         var data = {'login':'berg', 'senha':'e10adc3949ba59abbe56e057f20f883e', 'imei':imei};
 		var login_request = webservice("login", data);
-                
-		if (login_request.length>0){
 
-			localStorage.setItem("login",login);
-			localStorage.setItem("key",login_request["chave"]);
-			localStorage.setItem("id",login_request["id"]);
-            
-//            navigator.notification.alert("Bem vindo "+login+". Sua Chave: "+login_request["chave"]+" e ID: "+login_request["id"]);
-			cordova.plugin.pDialog.dismiss();
+		if (login_request["login"]=="true"){
+
+            localStorage.setItem("login",login);
+            localStorage.setItem("key",login_request["chave"]);
+            localStorage.setItem("id",login_request["id"]);
+
+            cordova.plugin.pDialog.dismiss();
+            //repeat login_manager()
             activate_page("#mainpage");
             downloader_list();
+            navigator.notification.alert("Para melhor experiência com o sistema, garanta que seu GPS esteja ativo!","","Audit Supervisor","OK");
+            //////////////////////////
             
-		} else{
+        } else if (login_request["login"]=="false"){
+            cordova.plugin.pDialog.dismiss();
+            navigator.notification.alert("Não foi possível entrar no sistema.","","Login e/ou senha incorreto(s)","OK");
+            
+        } else{
 			cordova.plugin.pDialog.dismiss();		
-			navigator.notification.alert("Não foi possível entrar no sistema.\nFalha ao se conectar com o servidor.","","Audit Supervisor","OK");
+			navigator.notification.alert("Não foi possível entrar no sistema.","","Falha ao se conectar com o servidor","OK");
 		}
+        
 	} else{
 		cordova.plugin.pDialog.dismiss();	
         
         if(!net){
-            navigator.notification.alert("Não foi possível acessar o servidor.\nVerifique sua conexão com a internet.","","Audit Supervisor","OK");
+            navigator.notification.alert("Não foi possível acessar o servidor.","","Falha na conexão","OK");
         } else if(!validate){
-            navigator.notification.alert("Erro no formulário.\nVerifique seu login e/ou senha.","","Audit Supervisor","OK");
+            navigator.notification.alert("Verifique seu login e/ou senha.","","Erro no formulário","OK");
         }
 	}
 }

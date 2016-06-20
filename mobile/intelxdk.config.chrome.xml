@@ -20,7 +20,7 @@
 <platform name="ios">
     <!-- below requires the splash screen plugin -->
     <!-- docs: https://github.com/apache/cordova-plugin-splashscreen -->
-    <preference name="AutoHideSplashScreen" value="true"/>
+    <preference name="AutoHideSplashScreen" value="false"/>
     <preference name="FadeSplashScreen" value="true"/>
     <preference name="FadeSplashScreenDuration" value="1600"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
@@ -39,7 +39,7 @@
 <platform name="android">
     <!-- below requires the splash screen plugin -->
     <!-- docs: https://github.com/apache/cordova-plugin-splashscreen -->
-    <preference name="AutoHideSplashScreen" value="true"/>
+    <preference name="AutoHideSplashScreen" value="false"/>
     <preference name="FadeSplashScreen" value="true"/>
     <preference name="FadeSplashScreenDuration" value="1600"/>
     <preference name="ShowSplashScreenSpinner" value="false"/>
