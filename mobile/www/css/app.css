@@ -87,7 +87,15 @@ body, textarea, input {
 }
 
 .login-position{
-    margin-top: 50%;
+    margin-top: 40% !important; 
+    position: absolute !important; 
+}
+
+.login-footer{
+    bottom: 0 !important; 
+    position: absolute !important; 
+    text-align: center !important;
+    margin-bottom: 20px !important;
 }
 
 .label-transparent, .input-transparent{

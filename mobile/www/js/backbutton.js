@@ -7,6 +7,15 @@ window.addEventListener('native.keyboardhide', function () {
     $('textarea').each(function() {
         $(this).blur();
     });
+    $('.login-footer').each(function() {
+        $(this).removeClass('hidden');
+    });
+});
+
+window.addEventListener('native.keyboardshow', function () {    
+    $('.login-footer').each(function() {
+        $(this).addClass('hidden');
+    });
 });
 
 function backbutton() {
