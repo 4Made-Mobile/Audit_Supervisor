@@ -2,8 +2,8 @@
 
 namespace cardial\Http\Controllers;
 
-use Illuminate\Http\Request;
 use cardial\Http\Requests\VisitaBaseRequest;
+use Request;
 use cardial\VisitaBase;
 use cardial\Visita;
 use cardial\Cliente;
@@ -49,14 +49,33 @@ class VisitaController extends Controller {
     }
 
     public function listaGeral() {
-        $visitas = VisitaBase::all();
+        $supervisor_id = Request::input('supervisor');
+        $vendedor_id = Request::input('vendedor');
+        $cliente_id = Request::input('cliente');
+
+
+        // No lugar dos IFs usar design patters. É melhor pro compilador amiguinhos ;)
+        // E melhora o código
+        if (!empty($supervisor_id) && empty($vendedor_id) && empty($cliente_id)) {
+            $visitas = VisitaBase::all()->where('supervisor_id', $supervisor_id);
+        } else if (!empty($supervisor_id) && !empty($vendedor_id) && empty($cliente_id)) {
+            $visitas = VisitaBase::all()->where('supervisor_id', $supervisor_id)->where('vendedor_id', $vendedor_id);
+        } else if (!empty($supervisor_id) && !empty($vendedor_id) && !empty($cliente_id)) {
+            $visitas = VisitaBase::all()->where('supervisor_id', $supervisor_id)->where('vendedor_id', $vendedor_id)->where('cliente_id', $cliente_id);
+        } else {
+            $visitas = VisitaBase::all();
+        }
+
         foreach ($visitas as $key => $value) {
             $visitas[$key]->vendedor = Vendedor::find($value->vendedor_id);
             $visitas[$key]->supervisor = Supervisor::find($value->supervisor_id);
             $visitas[$key]->cliente = Cliente::find($value->cliente_id);
         }
         return view('visita.lista-geral')
-                        ->with('visitas', $visitas);
+                        ->with('visitas', $visitas)
+                        ->with('supervisores', Supervisor::all())
+                        ->with('vendedores', Vendedor::all())
+                        ->with('clientes', Cliente::all());
     }
 
 }

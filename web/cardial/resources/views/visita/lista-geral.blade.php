@@ -13,6 +13,34 @@
             <button class="btn btn-primary">Nova Visita Base</button>
         </a>
     </div>
+    <br/>
+    <div class="row">
+        <select name="supervisor_id">
+            <option value="" selected="true"> --Selecione Supervisor-- </option>
+            @foreach($supervisores as $item)
+            <option value="{{$item->id}}">{{$item->nome}}</option>
+            @endforeach
+        </select>
+
+        <select name="vendedor_id">
+            <option value="" selected="true"> --Selecione Vendedor-- </option>
+            @foreach($vendedores as $item)
+            <option value="{{$item->id}}">{{$item->nome}}</option>
+            @endforeach
+        </select>
+
+        <select name="cliente_id">
+            <option value="" selected="true"> --Selecione Clientes -- </option>
+            @foreach($clientes as $item)
+            <option value="{{$item->id}}">{{$item->razao_social}}</option>
+            @endforeach
+        </select>
+
+        <a href="/visita/novo">
+            <button>Pesquisar</button>
+        </a>
+    </div>
+    <br/>
     <div class="row">
         <table class="table table-bordered table-responsive">
             <thead>

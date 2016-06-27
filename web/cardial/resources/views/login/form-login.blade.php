@@ -63,7 +63,7 @@
 
             <form class="form-signin" action="/login" method="POST">
                 <h2 class="form-signin-heading">Login</h2>
-                <input type="hidden" name="_token" value="<?php echo csrf_token() ?>">
+                {!! csrf_field() !!}
                 <label for="login" class="sr-only">Usuário</label>
                 <input type="text" id="login" name="login" class="form-control" placeholder="Digite seu usuario" required autofocus>
                 <label for="password" class="sr-only">Senha</label>

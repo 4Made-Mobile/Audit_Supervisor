@@ -4,6 +4,13 @@
 Route::get('/login', 'LoginController@form');
 Route::post('/login', 'LoginController@login');
 Route::get('/verifica', 'LoginController@verifica');
+Route::get('/logout', 'LoginController@logout');
+
+//HOME
+Route::get('/', 'HomeController@index');
+Route::get('/suporte', function() {
+    return "suporte";
+});
 
 // CLIENTE
 Route::get('/cliente/novo/', 'ClienteController@novo');

@@ -14,20 +14,25 @@ class LoginController extends Controller {
 
     public function login() {
         $dados = Request::only('login', 'password');
-        $user = User::all()->where('login', $dados['login'])->first();
-        Auth::login($user);
-        return "feito";
+        if (Auth::attempt($dados))
+            return redirect('/');
+        return redirect('/login');
     }
 
     public function verifica() {
-        return json_encode(Auth::guest());
+        return json_encode(Auth::check());
+    }
+
+    public function logout() {
+        Auth::logout();
+        return redirect('/login');
     }
 
     public function create() {
         User::create([
             'name' => 'Admin',
             'login' => '',
-            'password' => md5("123456"),
+            'password' => bcrypt("123456"),
         ]);
         return redirect()->action('LoginController@login');
     }

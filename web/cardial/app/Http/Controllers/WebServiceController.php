@@ -13,7 +13,7 @@ class WebServiceController extends Controller {
 
     public function verificaLogin() {
         if (empty($_GET['login']) && empty($_GET['senha']))
-            return json_encode(array('login' => false));
+            return json_encode(array('login' => "false"));
 
         $login = $_GET['login'];
         $senha = $_GET['senha'];
@@ -30,52 +30,49 @@ class WebServiceController extends Controller {
             $autenticao = $usuario->login == $login && $usuario->senha == $senha;
             if ($autenticao) {
                 $usuario->save();
-                return json_encode(array('login' => true, 'chave' => $usuario->chave, 'id' => $usuario->id));
+                return json_encode(array('login' => "true", 'chave' => $usuario->chave, 'id' => $usuario->id));
             }
         }
-        return json_encode(array('login' => false));
+        return json_encode(array('login' => "false"));
     }
 
     public function listaVisita() {
+
         if (!empty($_GET['supervisor_id']) && !empty($_GET['chave'])) {
             $supervisor_id = $_GET['supervisor_id'];
             $chave = $_GET['chave'];
+
             $usuario = Usuario::find($supervisor_id);
-            if ($usuario->chave == $chave) {
-                $visita_base = $this->visitasBases($supervisor_id);
 
-                foreach ($visita_base as $key => $item) {
-                    $ultima_visita = VisitaBase::join('visita', 'visita_base.id', '=', 'visita.visita_id')
-                            ->select('visita.data_inicial')
-                            ->where('visita_base.cliente_id', $item->cliente_id)
-                            ->where('visita.situacao', 'CONCLUIDO')
-                            ->get()
-                            ->last();
-                    $visita_base[$key]->ultima_visita = $ultima_visita->data_inicial;
-                }
+            // se não encontrar o ID retorna falso
+            if (empty($usuario))
+                return json_encode(array("false"));
 
+            if ($supervisor->chave == $_GET['chave']) {
+                $dados = array("true", array(), array());
 
-                $formulario = Pergunta::all()->where('visivel', 'S');
-                $dados = array(
-                    $visita_base,
-                    $formulario
+                // estrutura dos dados
+
+                $dados[1][$item->data_inicio] = array(
+                    $item->cidade,
+                    $item->id,
+                    $item->razao_social,
+                    $item->vendedor_id,
+                    $item->vendedor_nome,
+                    $item->formulario_id);
+
+                $dados[2][$formulario_id] = array(
+                    $item->id,
+                    $item->descricao,
+                    $item->obrigatorio,
+                    $item->ordem
                 );
+
                 return json_encode($dados);
             }
         }
-        return json_encode(false);
-    }
 
-    private function visitasBases($supervisor_id) {
-        return VisitaBase::
-                        join('visita', 'visita_base.id', '=', 'visita.visita_id')->
-                        join('cliente', 'visita_base.cliente_id', '=', 'cliente.id')->
-                        join('vendedor', 'visita_base.vendedor_id', '=', 'vendedor.id')->
-                        select('cliente.cidade', 'visita.id', 'visita.data_inicial', 'visita_base.cliente_id', 'cliente.razao_social', 'visita_base.vendedor_id', 'vendedor.nome')
-                        ->where('visita_base.supervisor_id', $supervisor_id)
-                        ->where('visita.data_inicial', '>', date('Y-m-d', strtotime("-1 days")))
-                        ->where('visita.data_inicial', '<=', date('Y-m-d', strtotime("+29 days")))
-                        ->get();
+        return json_encode(array("false"));
     }
 
     public function recebeRespostas() {

@@ -4,8 +4,8 @@ namespace cardial\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
-class Kernel extends HttpKernel
-{
+class Kernel extends HttpKernel {
+
     /**
      * The application's global HTTP middleware stack.
      *
@@ -29,8 +29,8 @@ class Kernel extends HttpKernel
             \Illuminate\Session\Middleware\StartSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
             \cardial\Http\Middleware\VerifyCsrfToken::class,
+            \cardial\Http\Middleware\Autorizador::class,
         ],
-
         'api' => [
             'throttle:60,1',
         ],
@@ -50,4 +50,5 @@ class Kernel extends HttpKernel
         'guest' => \cardial\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
     ];
+
 }
