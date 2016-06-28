@@ -7,6 +7,10 @@ $(document).on("change", "#input_date_select", function(evt){
     list_generator();
 });
 
+$(document).on("change", "#icon_date_select", function(evt){
+    list_generator();
+});
+
 function downloader_list(starting){
     if(!localStorage.getItem("list") || starting!="starting"){
         
