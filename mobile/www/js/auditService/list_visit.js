@@ -3,6 +3,10 @@ $(document).on("click", "#btn_refresh", function(evt){
     downloader_list();
 });
 
+$(document).on("change", "#input_date_select", function(evt){
+    list_generator();
+});
+
 function downloader_list(starting){
     if(!localStorage.getItem("list") || starting!="starting"){
         
@@ -43,10 +47,7 @@ function downloader_list(starting){
 function list_generator(){
     
     var list = JSON.parse(localStorage.getItem("list"));
-    
-//    navigator.notification.alert(localStorage.getItem("list"));
-    navigator.notification.alert(list[1][0]["data_inicial"]);
-    
-    
+
+    navigator.notification.alert("Hoje: "+formatDate("#input_date_select")+". Visitas: "+list[1][formatDate("#input_date_select")]);
     
 }

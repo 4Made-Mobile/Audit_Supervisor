@@ -1,9 +1,10 @@
 function internet() {
     var xhr = new XMLHttpRequest();
-    var file = "https://www.kirupa.com/blank.png";
-    var randomNum = Math.round(Math.random() * 10000);
+    var file = "http://supervisor.cardealdistribuidora.com.br/img/blank.png";
+//    var randomNum = Math.round(Math.random() * 10000);
      
-    xhr.open('HEAD', file + "?rand=" + randomNum, false);
+    xhr.open('HEAD', file, false);
+//    xhr.open('HEAD', file + "?rand=" + randomNum, false);
      
     try {
         xhr.send();

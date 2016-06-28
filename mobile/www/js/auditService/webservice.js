@@ -23,9 +23,9 @@ function webservice(option, data){
 function url_option(option){
     
     if(option=="login"){
-        return "http://cardealdistribuidora.web2409.uni5.net/supervisor/webservice/login";
+        return "http://supervisor.cardealdistribuidora.com.br/webservice/login";
     } else if(option=="lista-visita"){
-        return "http://cardealdistribuidora.web2409.uni5.net/supervisor/webservice/lista-visita";
+        return "http://supervisor.cardealdistribuidora.com.br/webservice/lista-visita";
     } else if(option=="resposta"){
         return "";
     }

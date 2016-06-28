@@ -11,8 +11,8 @@ function onAppReady() {
     expandTextarea();
     
     login_manager();
-    $("#input_date_select").datepicker().datepicker("setDate", new Date());
-    $("#icon_date_select").datepicker();
+    $("#input_date_select").datepicker({dateFormat: 'dd M, yy'}).datepicker("setDate", new Date());
+    $("#icon_date_select").datepicker({dateFormat: 'dd M, yy'});
     
 //	moment.locale('pt-br');
 //	$("#input_date_select").val(moment().format("LL"));

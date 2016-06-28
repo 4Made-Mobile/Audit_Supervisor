@@ -55,18 +55,19 @@ function limpar_campos(){
     });
 }
 
-
-function formatDate(stringDate){
-    
-    var day = stringDate.substring(8,10);
-    var month = stringDate.substring(5,7);
-    var year = stringDate.substring(0,4);
-    
-    return day + "/" + month + "/" + year;
-}
-
 function MainCtrl($scope, $ionicScrollDelegate) {
     $scope.scrollMainToTop = function() {
         $ionicScrollDelegate.$getByHandle('mainScroll').scrollTop();
     };
+}
+
+function firstUp(string){
+    var word = string.toLowerCase();
+    word = word.charAt(0).toUpperCase() + word.substr(1,word.length);
+    return word;
+}
+
+function formatDate(string){
+    var data = $(string).datepicker("getDate");
+    return $.datepicker.formatDate("yy-mm-dd 00:00:00", data);
 }
