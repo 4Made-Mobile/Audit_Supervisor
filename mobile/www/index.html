@@ -36,10 +36,12 @@
 
 		<script src="js/libs/md5.min.js"></script>
 		<script src="js/libs/internet_connection.js"></script>
+		<script src="js/libs/moment.min.js"></script>
 		<script src="js/backbutton.js"></script>
 
 		<script src="js/auditService/login.js"></script>
 		<script src="js/auditService/list_visit.js"></script>
+		<script src="js/auditService/form_maker.js"></script>
 		<script src="js/auditService/webservice.js"></script>
 
 	</head>
@@ -63,17 +65,18 @@
 						</div>
 					</div>
 
+<!--
 					<button class="button button-block button-positive" onclick="logout()">
 						Logout
 					</button>
 
-<!--
 					<button class="button button-block button-positive" onclick="activate_page('#page_feedback')">
 						Feedback
 					</button>
 -->
 
-					<div id="list" class="list">
+					<div id="list">
+<!--
 						<div class="item item-divider center b">Item Divider 1</div>
 						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 1</a>
 						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 2</a>
@@ -86,6 +89,7 @@
 						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 7</a>
 						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 8</a>
 						<a class="item" href="#" onclick="activate_page('#page_formulario')">Item 9</a>
+-->
 					</div>
 
 				</div>
@@ -94,7 +98,7 @@
 						<button id="btn_refresh" class="button button-positive widget uib_w_3 ion ion-refresh icon-right" data-uib="ionic/button" data-ver="0"></button>
 					</div>
 					<h1 class="title title-custom b">Audit Supervisor</h1>
-					<div class="buttons widget-container content-area horiz-area wrapping-col">
+					<div class="hidden buttons widget-container content-area horiz-area wrapping-col">
 						<button class="button button-assertive widget uib_w_3 ion ion-flag icon-right" data-uib="ionic/button" data-ver="0"></button>
 					</div>
 

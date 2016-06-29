@@ -162,6 +162,15 @@ body, textarea, input {
     align-items: center;
 }
 
+.empty_list{
+    margin-top: 25px;
+    font-size: 16px;
+}
+
+.item-divider{
+    font-size: 16px;
+}
+
 .bar-positive, .bar-positive .button-positive, .button-positive, .tabs-striped.tabs-positive .tabs{
     border-color: #47a6ad !important;
     background-color: #54c4cc !important;

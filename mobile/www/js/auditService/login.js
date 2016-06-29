@@ -10,7 +10,7 @@ function login_manager(){
         app.hideSplashScreen();
         activate_page("#mainpage");
         downloader_list("starting");
-        navigator.notification.alert("Para melhor experiência com o sistema, garanta que seu GPS esteja ativo!","","Audit Supervisor","OK");
+//        navigator.notification.alert("Para melhor experiência com o sistema, garanta que seu GPS esteja ativo!","","Audit Supervisor","OK");
     }
 }
 

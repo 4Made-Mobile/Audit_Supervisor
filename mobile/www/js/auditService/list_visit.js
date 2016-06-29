@@ -8,6 +8,7 @@ $(document).on("change", "#input_date_select", function(evt){
 });
 
 $(document).on("change", "#icon_date_select", function(evt){
+    $("#input_date_select").val($("#icon_date_select").val());
     list_generator();
 });
 
@@ -50,8 +51,33 @@ function downloader_list(starting){
 
 function list_generator(){
     
-    var list = JSON.parse(localStorage.getItem("list"));
-
-    navigator.notification.alert("Hoje: "+formatDate("#input_date_select")+". Visitas: "+list[1][formatDate("#input_date_select")]);
+    var lista = JSON.parse(localStorage.getItem("list"));
+    var lista_hoje = lista[1][formatDate("yy-mm-dd 00:00:00", "#input_date_select")];
+    var lista_html = document.getElementById("list");
     
+//    navigator.notification.alert(lista_hoje);
+    if (lista_hoje){
+        
+        if (lista_hoje!="vazio"){
+        
+            lista_html.innerHTML = '<div class="item-divider b"><center>'+cidades(lista_hoje)+'</center></div>';
+        
+            for (var i=0; i<lista_hoje.length; i++){
+                //id formulario, id visita, id vendedor, nome vendedor, data_ultima
+                var aux = [lista_hoje[i][6], lista_hoje[i][1], lista_hoje[i][4], lista_hoje[i][5]];
+                lista_html.innerHTML += '<a id="'+aux+'" class="item" href="#" onclick="form_maker(this.id)">'+lista_hoje[i][2]+'</a>';
+            }
+        
+        } else{
+            var aux = [0];
+            lista_html.innerHTML =  '<div class="row responsive-sm">'+
+                                    '<button id="'+aux+'" class="col button button-positive" onclick="form_maker(this.id)">'+
+				                    '   Deseja realizar o feedback do dia?'+
+				                    '</button></div>';
+        }
+        
+    } else{
+//       navigator.notification.alert("Não há visitas marcadas para esta data.");
+       lista_html.innerHTML = '<div class="empty_list center">Não há visitas marcadas para esta data.</div>';
+    }
 }

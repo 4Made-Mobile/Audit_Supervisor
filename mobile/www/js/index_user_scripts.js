@@ -67,7 +67,27 @@ function firstUp(string){
     return word;
 }
 
-function formatDate(string){
+function formatDate(format, string){
     var data = $(string).datepicker("getDate");
-    return $.datepicker.formatDate("yy-mm-dd 00:00:00", data);
+    return $.datepicker.formatDate(format, data);
+}
+
+function cidades(array_cidades){
+    var aux = $.extend(true, {}, array_cidades);
+    var cid = [];
+    var string = "";
+    var i, y;
+    
+    for (i=0; i<aux.length; i++){
+        for (y=0; y<aux.length; y++){
+            if (aux[i][0] == aux[y][0]) aux.splice(i, 1);
+        }        
+    }
+    
+    string = firstUp(aux[0][0]);
+    for (i=1; i<aux.length; i++){
+        string += ", " + firstUp(aux[i][0]);
+    }  
+    
+    return string;
 }
