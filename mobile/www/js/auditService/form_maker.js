@@ -1,7 +1,7 @@
 function form_maker(info){
     
     var array_info = info.split(",");
-//    navigator.notification.alert(array_info);
+    navigator.notification.alert(array_info);
     
     var gps_inicial, gps_final;
     var data_inicial, data_final;
@@ -14,12 +14,11 @@ function form_maker(info){
     // GPS INICIAL
     navigator.geolocation.getCurrentPosition(function(position){
         gps_inicial = position.coords.latitude+","+position.coords.longitude;
-        navigator.notification.alert("GPS: "+gps_inicial);
+//        navigator.notification.alert("GPS: "+gps_inicial);
     });
     
     // DATA COMPLETA INICIAL
     data_inicial = moment().format("YYYY-MM-DD HH:mm:ss");
-    
-    navigator.notification.alert("Data: "+data_inicial);
+//    navigator.notification.alert("Data: "+data_inicial);
     
 }

@@ -68,8 +68,15 @@ function firstUp(string){
 }
 
 function formatDate(format, string){
-    var data = $(string).datepicker("getDate");
-    return $.datepicker.formatDate(format, data);
+    if (string){
+        var data = $(string).datepicker("getDate");
+        return $.datepicker.formatDate(format, data);
+    } else {
+        var day = format.substring(8,10);
+        var month = format.substring(5,7);
+        var year = format.substring(0,4);   
+        return day + "/" + month + "/" + year;
+    }
 }
 
 function cidades(array_cidades){

@@ -61,10 +61,10 @@ function list_generator(){
         if (lista_hoje!="vazio"){
         
             lista_html.innerHTML = '<div class="item-divider b"><center>'+cidades(lista_hoje)+'</center></div>';
-        
             for (var i=0; i<lista_hoje.length; i++){
+  
                 //id formulario, id visita, id vendedor, nome vendedor, data_ultima
-                var aux = [lista_hoje[i][6], lista_hoje[i][1], lista_hoje[i][4], lista_hoje[i][5]];
+                var aux = [lista_hoje[i][5], lista_hoje[i][1], lista_hoje[i][3], lista_hoje[i][4], formatDate(lista_hoje[i][6])];
                 lista_html.innerHTML += '<a id="'+aux+'" class="item" href="#" onclick="form_maker(this.id)">'+lista_hoje[i][2]+'</a>';
             }
         
