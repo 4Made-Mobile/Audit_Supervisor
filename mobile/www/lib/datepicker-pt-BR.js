@@ -16,6 +16,7 @@ jQuery(function($){
 		dayNamesMin: ['Dom','Seg','Ter','Qua','Qui','Sex','S&aacute;b'],
 		weekHeader: 'Sm',
 		dateFormat: 'dd MM, yy',
+        minDate: "0",
 		firstDay: 0,
 		isRTL: false,
 		showMonthAfterYear: false,

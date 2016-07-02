@@ -12,13 +12,14 @@ $(document).on("change", "#icon_date_select", function(evt){
     list_generator();
 });
 
+// Função para baixar a lista de visitas dos próximos dias
 function downloader_list(starting){
     if(!localStorage.getItem("list") || starting!="starting"){
         
         cordova.plugin.pDialog.init({cancelable:false,title:"Audit Supervisor",message:"Sincronizando informações..."});
         
         if(internet()){
-            
+            // requisição
             var data = {'supervisor_id':localStorage.getItem("id"), 'chave':localStorage.getItem("key")};
             var list_request = webservice("lista-visita", data);
             
@@ -49,13 +50,16 @@ function downloader_list(starting){
     }
 }
 
+// função para montar a lista de visitas no menu do app
 function list_generator(){
     
     var lista = JSON.parse(localStorage.getItem("list"));
     var lista_hoje = lista[1][formatDate("yy-mm-dd 00:00:00", "#input_date_select")];
     var lista_html = document.getElementById("list");
-    
 //    navigator.notification.alert(lista_hoje);
+    
+    // listagem do dia que consta no input
+    // Se a lista tiver 'vazio' (colocado pela função de delete): mostra o botão de feedback
     if (lista_hoje){
         
         if (lista_hoje!="vazio"){
@@ -63,13 +67,13 @@ function list_generator(){
             lista_html.innerHTML = '<div class="item-divider b"><center>'+cidades(lista_hoje)+'</center></div>';
             for (var i=0; i<lista_hoje.length; i++){
   
-                //id formulario, id visita, id vendedor, nome vendedor, data_ultima
-                var aux = [lista_hoje[i][5], lista_hoje[i][1], lista_hoje[i][3], lista_hoje[i][4], formatDate(lista_hoje[i][6])];
+                // id visita, id formulario, id vendedor, nome vendedor, data_ultima
+                var aux = [lista_hoje[i][1], lista_hoje[i][5], lista_hoje[i][3], lista_hoje[i][4], formatDate(lista_hoje[i][6])];
                 lista_html.innerHTML += '<a id="'+aux+'" class="item" href="#" onclick="form_maker(this.id)">'+lista_hoje[i][2]+'</a>';
             }
         
         } else{
-            var aux = [0];
+            var aux = [0, 0];
             lista_html.innerHTML =  '<div class="row responsive-sm">'+
                                     '<button id="'+aux+'" class="col button button-positive" onclick="form_maker(this.id)">'+
 				                    '   Deseja realizar o feedback do dia?'+

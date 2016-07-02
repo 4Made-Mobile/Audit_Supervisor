@@ -9,6 +9,10 @@
      $(document).on("click", "#limparfeedback", function(evt){
          limpar_campos();
      });
+     
+     $(document).on("click", "#finalizarform", function(evt){
+         form_validation();
+     });
   }
  document.addEventListener("app.Ready", register_event_handlers, false);
 })();
@@ -20,7 +24,7 @@ function expandTextarea() {
     var $element = $('.autosize');  
     
     $('.expand').each(function() {
-        $(this).attr('rows', Math.ceil($(this).val().length / ($(this).width()/5)) * 0.69);
+        $(this).attr('rows', Math.ceil($(this).val().length / ($(this).width()/5)) * 1.5);
     });
     
     for (i=0; i<$element.length; i++){
@@ -52,6 +56,10 @@ function limpar_campos(){
     
     $('[type=checkbox]').each(function() {
         $(this).prop("checked", false);
+    });
+    
+    $('span.text-error').each(function() {
+        $(this).addClass('hidden');
     });
 }
 
