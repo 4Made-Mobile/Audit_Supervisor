@@ -64,7 +64,11 @@ function geolocationSuccess(position){
         }
         
         msg += "Pergunta: " + jquery_respostas.eq(i).find("textarea").eq(0).val() + "\n";
-        msg += "Resposta: " + resposta + "\n\n";
+        msg += "Resposta: " + resposta;
+        
+        if (i<jquery_respostas.length-1){
+            msg+="\n\n";
+        }
         
         resp = {"descricao": resposta, "pergunta_id": pergunta_id};
         array_resposta.push(resp);
@@ -74,6 +78,8 @@ function geolocationSuccess(position){
     
     array_requisicao = {"supervisor_id": localStorage.getItem("id"), "chave": localStorage.getItem("key"), "formulario": array_formulario};
     
+    var array_aux = {"msg": msg, "array_requisicao": array_requisicao};
+    
     cordova.plugin.pDialog.dismiss();
     
     navigator.notification.confirm(msg, function(buttonIndex){
@@ -81,20 +87,21 @@ function geolocationSuccess(position){
         if (buttonIndex==1){
             if (localStorage.getItem("pendente")){
                 var list_pendente = JSON.parse(localStorage.getItem("pendente"));
-                list_pendente.push(JSON.stringify(array_requisicao));
+                list_pendente.push(JSON.stringify(array_aux));
                 localStorage.setItem("pendente", JSON.stringify(list_pendente));
 //                navigator.notification.alert(list_pendente);
                 
             } else{
-                var list_pendente = [JSON.stringify(array_requisicao)];
+                var list_pendente = [JSON.stringify(array_aux)];
                 localStorage.setItem("pendente", JSON.stringify(list_pendente));
+//                navigator.notification.alert(list_pendente);
             }
             
             activate_page("#mainpage");
             send_message();
         }
         
-    }, "Confirma os seguintes dados?", ['Confirmar','Voltar']);
+    }, "Confirma o envio dos dados?", ['Confirmar','Voltar']);
 
 }
 
