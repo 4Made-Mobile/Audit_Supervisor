@@ -77,28 +77,40 @@ function geolocationSuccess(position){
     array_formulario = {"visita_id": aux[0], "formulario_id": aux[1], "gps_inicial": gps_inicial, "gps_final": gps_final, "data_inicio": data_inicial, "data_fim": data_final, "respostas": array_resposta};
     
     array_requisicao = {"supervisor_id": localStorage.getItem("id"), "chave": localStorage.getItem("key"), "formulario": array_formulario};
-    
-    var array_aux = {"msg": msg, "array_requisicao": array_requisicao};
-    
+        
     cordova.plugin.pDialog.dismiss();
     
     navigator.notification.confirm(msg, function(buttonIndex){
         
         if (buttonIndex==1){
+            
             if (localStorage.getItem("pendente")){
                 var list_pendente = JSON.parse(localStorage.getItem("pendente"));
-                list_pendente.push(JSON.stringify(array_aux));
+                var list_razao_social = JSON.parse(localStorage.getItem("RazaoSocial"));
+                
+                list_pendente.push(array_requisicao);
+                list_razao_social.push(localStorage.getItem("RazaoSocialAtual"));
+//                navigator.notification.alert(JSON.parse(localStorage.getItem("RazaoSocial"))[1]);
+                
                 localStorage.setItem("pendente", JSON.stringify(list_pendente));
-//                navigator.notification.alert(list_pendente);
+                localStorage.setItem("RazaoSocial", JSON.stringify(list_razao_social));
+                
+//                localStorage.setItem("pendente", "");
+//                localStorage.setItem("RazaoSocial", "");
                 
             } else{
-                var list_pendente = [JSON.stringify(array_aux)];
+                var list_pendente = [array_requisicao];
+                var list_razao_social = [localStorage.getItem("RazaoSocialAtual")];
+                
                 localStorage.setItem("pendente", JSON.stringify(list_pendente));
-//                navigator.notification.alert(list_pendente);
+                localStorage.setItem("RazaoSocial", JSON.stringify(list_razao_social));
+//                navigator.notification.alert(JSON.parse(localStorage.getItem("RazaoSocial"))[0]);
             }
-            
+
+            send_message(JSON.parse(localStorage.getItem("pendente")).length); // enviando a última posição (formulário atual)
+            deleteIndex("visita", aux[0]);  // deletando a visita respondida
+            list_generator();
             activate_page("#mainpage");
-            send_message();
         }
         
     }, "Confirma o envio dos dados?", ['Confirmar','Voltar']);

@@ -62,8 +62,7 @@ function list_generator(){
     // Se a lista tiver 'vazio' (colocado pela função de delete): mostra o botão de feedback
     if (lista_hoje){
         
-        if (lista_hoje!="vazio"){
-        
+        if (lista_hoje!=""){
             lista_html.innerHTML = '<div class="item-divider b"><center>'+cidades(lista_hoje)+'</center></div>';
             for (var i=0; i<lista_hoje.length; i++){
   
@@ -74,7 +73,7 @@ function list_generator(){
         
         } else{
             var aux = [0, 0];
-            lista_html.innerHTML =  '<div class="row responsive-sm">'+
+            lista_html.innerHTML =  '<div style="margin-top:5px;" class="row responsive-sm">'+
                                     '<button id="'+aux+'" class="col button button-positive" onclick="form_maker(this.id)">'+
 				                    '   Deseja realizar o feedback do dia?'+
 				                    '</button></div>';

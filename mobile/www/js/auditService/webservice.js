@@ -16,7 +16,6 @@ function webservice(option, data){
 		error: function(resp){result = resp;}
 	});
 
-//	navigator.notification.alert(result["login"]);
     return result;
 }
 
@@ -27,6 +26,6 @@ function url_option(option){
     } else if(option=="lista-visita"){
         return "http://supervisor.cardealdistribuidora.com.br/webservice/lista-visita";
     } else if(option=="resposta"){
-        return "";
+        return "http://supervisor.cardealdistribuidora.com.br/webservice/repostas";
     }
 }

@@ -5,5 +5,9 @@ function onAppReady() {
     
     login_manager();  
     deleteIndex("yesterday");
+    
+    if (JSON.parse(localStorage.getItem("pendente")).length>0){
+        $("#btn_pendente").removeClass("hidden");
+    }
 }
 document.addEventListener("app.Ready", onAppReady, false);

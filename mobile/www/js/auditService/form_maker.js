@@ -1,8 +1,10 @@
 function form_maker(info){
+    
+    localStorage.setItem("RazaoSocialAtual", document.getElementById(info).innerText);
     // id_visita, id_formulario, id_vendedor, nome_vendedor, data_ultima
     var array_info = info.split(",");
     var lista = JSON.parse(localStorage.getItem("list"));
-    
+
     // GPS INICIAL
     navigator.geolocation.getCurrentPosition(function(position){
         localStorage.setItem("gps_inicial", position.coords.latitude+","+position.coords.longitude);
@@ -19,7 +21,10 @@ function form_maker(info){
 
     // Pegando as perguntas e colocando em um array
     var perguntas = lista[2][array_info[1]];
-    perguntas.sort(compare); // ordenando a ordem das perguntas
+        
+    if (perguntas){
+        perguntas.sort(compare); // ordenando a ordem das perguntas
+    }
         
     // ID = 0 : formulário de feedback
     if (array_info[1] > 0) {

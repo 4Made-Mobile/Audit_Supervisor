@@ -82,9 +82,14 @@ function formatDate(format, string){
     } else {
         var day = format.substring(8,10);
         var month = format.substring(5,7);
-        var year = format.substring(0,4);   
+        var year = format.substring(0,4);           
         return day + "/" + month + "/" + year;
     }
+}
+
+function hour(string){
+    var hour = string.substring(11,string.length);         
+    return hour;
 }
 
 function cidades(array_cidades){

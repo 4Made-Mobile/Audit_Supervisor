@@ -24,7 +24,7 @@ function backbutton() {
         
         if ($('#mainpage').hasClass('hidden')){
 
-            if (!($('#page_formulario').hasClass('hidden')) || !($('#page_pendente').hasClass('hidden')) || !($('#page_feedback').hasClass('hidden'))) {
+            if (!($('#page_formulario').hasClass('hidden')) || !($('#page_pendente').hasClass('hidden'))) {
                 activate_page("#mainpage");
             }
             

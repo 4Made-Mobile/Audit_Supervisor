@@ -45,6 +45,7 @@
 		<script src="js/auditService/form_validation.js"></script>
 		<script src="js/auditService/send_message.js"></script>
 		<script src="js/auditService/deleteIndex.js"></script>
+		<script src="js/auditService/pending.js"></script>
 		<script src="js/auditService/webservice.js"></script>
 
 	</head>
@@ -80,17 +81,16 @@
 						<button id="btn_refresh" class="button button-positive widget uib_w_3 ion ion-refresh icon-right" data-uib="ionic/button" data-ver="0"></button>
 					</div>
 					<h1 class="title title-custom b">Audit Supervisor</h1>
-					<div class="hidden buttons widget-container content-area horiz-area wrapping-col">
-						<button class="button button-assertive widget uib_w_3 ion ion-flag icon-right" data-uib="ionic/button" data-ver="0"></button>
+					<div id="btn_pendente" class="hidden buttons widget-container content-area horiz-area wrapping-col">
+						<button class="button button-assertive widget uib_w_3 ion ion-flag icon-right" data-uib="ionic/button" data-ver="0" onclick="pending_list()"></button>
 					</div>
-
 				</ion-header-bar>
 			</div>
 		</div>
 
 		<div class="upage vertical-col left hidden background" id="page_login">
 
-			<ion-content style="margin-bottom:-40px !important;margin-top:-40px !important;">
+			<ion-content class="content_footer_login">
                 <div class="grid grid-pad urow uib_row_8 row-height-8" data-uib="layout/row" data-ver="0">
                     <div class="col uib_col_9 col-0_12-12" data-uib="layout/col" data-ver="0">
                         <div class="widget-container content-area vertical-col">
@@ -166,14 +166,18 @@
 		</div>
 
 		<div class="upage vertical-col left hidden" id="page_pendente">
-			<div class="grid grid-pad urow uib_row_7 row-height-7" data-uib="layout/row" data-ver="0">
-				<div class="col uib_col_8 col-0_12-12" data-uib="layout/col" data-ver="0">
-					<div class="widget-container content-area vertical-col">
-
-						PENDENTES
-
+            <ion-content delegate-handle="mainScroll" class="content_footer">
+                <div id="lista_pendente"></div>
+            </ion-content>
+            
+            <div class="upage-outer fixed-header-footer">
+				<ion-header-bar class="bar inner-element bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
+					<div class="buttons widget-container content-area horiz-area wrapping-col">
+						<button onclick="activate_page('#mainpage')" class="button button-positive widget ion ion-chevron-left icon-only" style="width:42px;" data-uib="ionic/button" data-ver="0"></button>
 					</div>
-				</div>
+					<h1 id="title_form" class="title title-custom b">Pendentes</h1>
+					<div class="buttons widget-container content-area horiz-area wrapping-col"></div>
+				</ion-header-bar>
 			</div>
 		</div>
 
