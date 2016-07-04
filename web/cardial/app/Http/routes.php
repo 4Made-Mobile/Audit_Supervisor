@@ -1,5 +1,5 @@
 <?php
-
+date_default_timezone_set('America/Sao_Paulo');
 // AUTH
 Route::get('/login', 'LoginController@form');
 Route::post('/login', 'LoginController@login');
@@ -39,14 +39,15 @@ Route::get('/vendedor/mostra/{id}', 'VendedorController@mostra');
 Route::get('/vendedor/edita/{id}', 'VendedorController@edita');
 Route::get('/vendedor/remove/{id}', 'VendedorController@remove');
 
-// PERGUNTA
-Route::get('/pergunta/novo/', 'PerguntaController@novo');
-Route::get('/pergunta/lista-geral/', 'PerguntaController@listaGeral');
-Route::post('/pergunta/adiciona', 'PerguntaController@adiciona');
-Route::post('/pergunta/altera', 'PerguntaController@altera');
-Route::get('/pergunta/mostra/{id}', 'PerguntaController@mostra');
-Route::get('/pergunta/edita/{id}', 'PerguntaController@edita');
-Route::get('/pergunta/remove/{id}', 'PerguntaController@remove');
+// FORMULARIO
+Route::get('/formulario/novo/', 'FormularioController@novo');
+Route::post('/formulario/adiciona/', 'FormularioController@adiciona');
+//Route::get('/formulario/lista-geral/', 'FormularioController@listaGeral');
+//Route::post('/formulario/adiciona', 'FormularioController@adiciona');
+//Route::post('/formulario/altera', 'FormularioController@altera');
+//Route::get('/formulario/mostra/{id}', 'FormularioController@mostra');
+//Route::get('/formulario/edita/{id}', 'FormularioController@edita');
+//Route::get('/formulario/remove/{id}', 'FormularioController@remove');
 
 // Visitas Base e Pesquisa
 Route::get('/visita/novo/', 'VisitaController@novo');
@@ -60,5 +61,7 @@ Route::get('/visita/relatorio/{id}', 'VisitaController@relatorio');
 // WEBSERVICE
 Route::get('/webservice/login/', 'WebServiceController@verificaLogin');
 Route::get('/webservice/lista-visita/', 'WebServiceController@listaVisita');
-
-
+Route::get('/webservice/repostas/', 'WebServiceController@resposta');
+Route::get('/hora/', function(){
+	return date('Y-m-d');
+});
