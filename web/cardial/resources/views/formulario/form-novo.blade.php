@@ -9,7 +9,7 @@
 	</div>
 <br/>
 	<div class="row">
-			<input type="hidden" value="0" id="id-formulario" /> 
+			<input type="hidden" value="" id="id-formulario" /> 
 			<div class="col-lg-2">
 				<label for="nome-formulario"><p class="center">Nome do Formulário</p></label>
 			</div>
@@ -77,7 +77,7 @@
 			Vísivel
 		</div>
 		<div class="col-lg-1">
-			<input id="pergunta-visivel" name="pergunta-visivel" class="form-control" type="checkbox"/>
+			<input id="pergunta-visivel" value="S" name="pergunta-visivel" class="form-control" type="checkbox"/>
 		</div>
 
 		<div class="col-lg-1">
@@ -121,23 +121,8 @@
 	*/
 
 	// 1 - Finalizar
-	$("#finalizar").click(function(event){
-		event.preventDefault();
-		var id_formulario = $("#id-formulario").val();
-		if(id_formulario == 0){
-			// abre um modal dizendo que não pode finalizar a página
-		}else{
-			$.ajax(
-				{
-					'url' : '',
-					'type': 'GET',
-					'data' : [''],
-					'success' : function(){
-						
-					}
-				}); 
-		}
-	});
+
+	$("#finalizar").click(finalizaFormulario);
 
 </script>
 
