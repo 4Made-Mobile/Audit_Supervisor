@@ -84,7 +84,7 @@
 			Ordem
 		</div>
 		<div class="col-lg-1">
-			<input id="pergunta-ordem" name="pergunta-ordem" class="form-control" type="number"/>
+			<input id="pergunta-ordem" name="pergunta-ordem" class="form-control" type="text"/>
 		</div>
 
 		<div class="col-lg-1">
@@ -125,11 +125,10 @@
 	$("#finalizar").click(finalizaFormulario);
 
 	// 2 - Cancelar
-	$('#cancelar').click(function(event){
-		event.preventDefault();
-		console.log("Hello World");
-	})
+	$('#cancelar').click(cancelarFormulario);
 
+	// 5 - adiciona-pergunta
+	$('#adiciona-pergunta').click(adicionaPergunta);
 </script>
 
 @endsection
