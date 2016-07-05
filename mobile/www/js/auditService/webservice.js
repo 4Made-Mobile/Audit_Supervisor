@@ -26,6 +26,6 @@ function url_option(option){
     } else if(option=="lista-visita"){
         return "http://supervisor.cardealdistribuidora.com.br/webservice/lista-visita";
     } else if(option=="resposta"){
-        return "http://supervisor.cardealdistribuidora.com.br/webservice/repostas";
+        return "http://supervisor.cardealdistribuidora.com.br/webservice/respostas";
     }
 }
