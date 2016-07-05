@@ -15,7 +15,8 @@ class Autorizador {
      */
     public function handle($request, Closure $next) {
 
-        if (!$request->is('login') && \Auth::guest() && !$request->is('webservice/login') && !$request->is('webservice/lista-visita') && !$request->is('hora')) {
+        if (!$request->is('login') && \Auth::guest() && !$request->is('webservice/login') && !$request->is('webservice/lista-visita') && !$request->is('hora')
+            && !$request->is('webservice/respostas')) {
             return redirect('/login');
         }
         return $next($request);

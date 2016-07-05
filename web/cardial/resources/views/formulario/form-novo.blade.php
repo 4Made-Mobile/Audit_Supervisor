@@ -107,6 +107,7 @@
 	</div>
 </form>
 @include('layout.scripts')
+<script src="/js/formulario/novo-formulario.js"></script>
 
 <script>
 	
@@ -121,8 +122,13 @@
 	*/
 
 	// 1 - Finalizar
-
 	$("#finalizar").click(finalizaFormulario);
+
+	// 2 - Cancelar
+	$('#cancelar').click(function(event){
+		event.preventDefault();
+		console.log("Hello World");
+	})
 
 </script>
 

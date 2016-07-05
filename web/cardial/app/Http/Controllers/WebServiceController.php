@@ -130,7 +130,7 @@ class WebServiceController extends Controller {
         return json_encode(array("false"));
     }
 
-    public function recebeRespostas() {
+    public function resposta() {
 
         // forma que os dados chegam
         /*array_requisicao = {
@@ -151,49 +151,45 @@ class WebServiceController extends Controller {
         array_resposta = {"descricao": resposta, "pergunta_id": pergunta_id}; */
 
         // verifica se todos os valores estão preenchidos
-        $dados_recebido = json_decode($_GET['array_requisicao']);
-        if(empty($dados_recebido) || empty($dados_recebido['supervisor_id']) || empty($dados_recebido['chave']) || empty($dados_recebido['formulario']))
+        $dados_recebido = json_decode(Request::input('array_requisicao'));
+
+        if(empty($dados_recebido) || empty($dados_recebido->supervisor_id) || empty($dados_recebido->chave) || empty($dados_recebido->formulario))
             return json_encode(array("false"));
 
         // verifica se o formulário está okay
-        $formulario_array = $dados_recebido['formulario'];
-        if(empty($formulario_array) || empty($formulario_array['respostas']))
+        $formulario = $dados_recebido->formulario;
+        if(empty($formulario->respostas))
             return json_encode(array("false"));
 
         // verifica se a chave dos dados está correta
-        $supervisor_id = $dados_recebido['supervisor_id'];
-        $chave = $dados_recebido['chave'];
+        $supervisor_id = $dados_recebido->supervisor_id;
+        $chave = $dados_recebido->chave;
 
         $usuario = Usuario::find($supervisor_id);
-
         // se não encontrar o ID retorna falso
         if (empty($usuario))
             return json_encode(array("false"));
 
-        $requisicao_valida = $usuario->chave == $dados_recebido['chave'];
+        $requisicao_valida = $usuario->chave == $dados_recebido->chave;
         if ($requisicao_valida) {
-
             // percorreu todos os formulários
-            foreach($formulario_array AS $form){
+            // adiciona o gps inicial e final. // adiciona hora inicial e final
+            $visita = Visita::find($formulario->visita_id);
+            $visita->pesquisa_inicio = $formulario->data_inicio;
+            $visita->pesquisa_fim = $formulario->data_fim;
+            $visita->gps_inicio = $formulario->gps_inicial;
+            $visita->gps_fim = $formulario->gps_final;
+            $visita->data_final = date('Y-m-d');
+            $visita->situacao = 'CONCLUIDO';
 
-                // adiciona o gps inicial e final. // adiciona hora inicial e final
-                $visita = Visita::find($form['visita_id']);
-                $visita->pesquisa_inicio = $form['data_inicio'];
-                $visita->pesquisa_fim = $form['data_fim'];
-                $visita->gps_inicio = $form['gps_inicio'];
-                $visita->gps_fim = $form['gps_fim'];
-                $visita->data_final = date('Y-m-d');
-                $visita->situacao = 'CONCLUIDO';
+            $visita->save();
 
-                $visita->save();
-
-                $respostas = $form['respostas'];
-                foreach($respostas AS $res){
-                    Resposta::create(array(
-                            $res['descricao'],
-                            $res['pergunta_id']
-                        ));
-                }
+            $respostas = $formulario->respostas;
+            foreach($respostas AS $res){
+                Resposta::create(array(
+                        'descricao' => $res->descricao,
+                        'pergunta_id' => $res->pergunta_id,
+                    ));
             }
 
             return json_encode("true");

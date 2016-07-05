@@ -62,7 +62,7 @@ Route::get('/visita/relatorio/{id}', 'VisitaController@relatorio');
 // WEBSERVICE
 Route::get('/webservice/login/', 'WebServiceController@verificaLogin');
 Route::get('/webservice/lista-visita/', 'WebServiceController@listaVisita');
-Route::get('/webservice/repostas/', 'WebServiceController@resposta');
+Route::get('/webservice/respostas/', 'WebServiceController@resposta');
 Route::get('/hora/', function(){
 	return date('Y-m-d');
 });
