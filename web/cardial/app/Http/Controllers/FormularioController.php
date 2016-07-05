@@ -4,6 +4,8 @@ namespace cardial\Http\Controllers;
 
 use cardial\Http\Requests\PerguntaRequest;
 use cardial\Pergunta;
+use cardial\Formulario;
+use Requests;
 
 class FormularioController extends Controller {
 
@@ -18,6 +20,11 @@ class FormularioController extends Controller {
         		return json_encode("erooou!");
 
         	return json_encode("acertou");
+        }
+
+        public function listaPergunta(){
+            $id_formulario = Requests::input('id_formulario');
+            $perguntas = Pergunta
         }
     
 }

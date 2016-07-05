@@ -74,13 +74,42 @@ var adicionaPergunta = function(event){
 	data.push($($select[0]).val());
 
 	if(validacao){
-		console.log(data);
+		var id_formulario = $("#id-formulario").val();
+		var nao_existe = id_formulario == '';
+
+		if(nao_existe){
+			// cria um formulario novo
+		}
+
+		$(atualizaLista);
+
 	}else{
 		$($select).each(function(){
 			swal("Essa pergunta não pode ser adicionada!");
-		})
+		});
 	}
+}
 
-	// adiciona itens a lista
-	
+var atualizaLista = function(id_formulario){
+	// 1 - Limpa a tabela 
+	var td = $(atualizaLista).find("td");
+	$(td).each(function(){
+		console.log("Hello World");
+	});
+
+	// requisição ajax para construir a página o_o"
+	$.ajax(
+			{
+				url : 'http://localhost:8000/formulario/lista-pergunta/',
+				data : {'id_formulario' : id_formulario},
+				contentType: "application/json",
+				processdata: true,
+				dataType : 'JSON',
+				success : function(data){
+					console.log("Olá, mundo")
+				}
+			});
+
+	// 2 - Pega lista dos dados
+		// 3 - Preenche a tabela com os dados
 }

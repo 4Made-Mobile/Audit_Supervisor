@@ -43,6 +43,7 @@ Route::get('/vendedor/remove/{id}', 'VendedorController@remove');
 Route::get('/formulario/novo/', 'FormularioController@novo');
 Route::post('/formulario/adiciona/', 'FormularioController@adiciona');
 Route::get('/formulario/finalizar/', 'FormularioController@finalizar');
+Route::get('/formulario/lista-pergunta/', 'FormularioController@listaPergunta');
 //Route::get('/formulario/lista-geral/', 'FormularioController@listaGeral');
 //Route::post('/formulario/adiciona', 'FormularioController@adiciona');
 //Route::post('/formulario/altera', 'FormularioController@altera');
