@@ -13,7 +13,7 @@ function pending_list(){
         list_pendente_html.innerHTML  +=   
             '<div class="card">'+
             '   <div class="item item-divider">'+
-            '   <div class="title_pendente_margin">Data visita: '+data+'</div>'+
+            '   <div class="title_pendente_margin b">Data: '+data+'</div>'+
             '</div>'+
             '<div class="row item item-text-wrap">'+
             '   <div class="col col-75 center_vertical">'+lista_razao_social[i]+'</div> '+

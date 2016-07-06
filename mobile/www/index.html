@@ -68,13 +68,10 @@
 							<input id="icon_date_select" class="icon-calendar d-margins-col-center" type="text" readonly="">
 						</div>
 					</div>
-<!--
-					<button class="button button-block button-positive" onclick="logout()">
-						Logout
-					</button>
--->
+                    
+<!--					<button class="button button-block button-positive" onclick="logout()">Logout</button>-->
 					<div id="list"></div>
-
+                    
 				</div>
 				<ion-header-bar class="bar inner-element uib_w_1 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
 					<div class="buttons widget-container content-area horiz-area wrapping-col">
@@ -147,7 +144,7 @@
 			<div class="upage-outer fixed-header-footer">
 				<ion-header-bar class="bar inner-element uib_w_4 bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
 					<div class="buttons widget-container content-area horiz-area wrapping-col">
-						<button onclick="activate_page('#mainpage')" class="button button-positive widget uib_w_3 ion ion-chevron-left icon-only" style="width:42px;" data-uib="ionic/button" data-ver="0"></button>
+						<button onclick="activate_page('#mainpage')" class="button button-positive widget uib_w_3 ion ion-chevron-left icon-only" style="width:42px;" data-uib="ionic/button" data-ver="0" ng-click="scrollMainToTop()"></button>
 					</div>
 					<h1 id="title_form" class="title title-custom b">Formulário</h1>
 					<div class="buttons widget-container content-area horiz-area wrapping-col"></div>
@@ -159,7 +156,7 @@
 					</div>
 					<h1 class="title"></h1>
 					<div id="finalizarform" class="buttons widget-container content-area horiz-area wrapping-col">
-						<button class="button button-positive widget uib_w_3 icon b ion ion-checkmark icon-right" data-uib="ionic/button" data-ver="0">Finalizar&nbsp;</button>
+						<button class="button button-positive widget uib_w_3 icon b ion ion-checkmark icon-right" data-uib="ionic/button" data-ver="0" ng-click="scrollMainToTop()">Finalizar&nbsp;</button>
 					</div>
 				</ion-footer-bar>
 			</div>
@@ -173,7 +170,7 @@
             <div class="upage-outer fixed-header-footer">
 				<ion-header-bar class="bar inner-element bar-positive bar-header" data-uib="ionic/header" data-ver="0" align-title="center">
 					<div class="buttons widget-container content-area horiz-area wrapping-col">
-						<button onclick="activate_page('#mainpage')" class="button button-positive widget ion ion-chevron-left icon-only" style="width:42px;" data-uib="ionic/button" data-ver="0"></button>
+						<button onclick="activate_page('#mainpage')" class="button button-positive widget ion ion-chevron-left icon-only" style="width:42px;" data-uib="ionic/button" data-ver="0" ng-click="scrollMainToTop()"></button>
 					</div>
 					<h1 id="title_form" class="title title-custom b">Pendentes</h1>
 					<div class="buttons widget-container content-area horiz-area wrapping-col"></div>

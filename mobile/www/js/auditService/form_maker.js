@@ -25,7 +25,7 @@ function form_maker(info){
     if (perguntas){
         perguntas.sort(compare); // ordenando a ordem das perguntas
     }
-        
+    
     // ID = 0 : formulário de feedback
     if (array_info[1] > 0) {
         $("#cabecalho_form").removeClass("hidden");

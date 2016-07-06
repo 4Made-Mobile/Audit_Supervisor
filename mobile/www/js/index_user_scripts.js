@@ -24,7 +24,10 @@ function expandTextarea() {
     var $element = $('.autosize');  
     
     $('.expand').each(function() {
-        $(this).attr('rows', Math.ceil($(this).val().length / ($(this).width()/5)) * 1.5);
+//        $(this).attr('rows', Math.ceil($(this).val().length / ($(this).width()/4.5)) * 2);
+        this.style.overflow = 'hidden';
+        this.style.height = 0;
+        this.style.height = this.scrollHeight + 'px';
     });
     
     for (i=0; i<$element.length; i++){

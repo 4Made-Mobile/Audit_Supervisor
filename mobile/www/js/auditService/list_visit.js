@@ -72,10 +72,11 @@ function list_generator(){
             }
         
         } else{
+            // id visita, id formulario
             var aux = [0, 0];
             lista_html.innerHTML =  '<div style="margin-top:5px;" class="row responsive-sm">'+
                                     '<button id="'+aux+'" class="col button button-positive" onclick="form_maker(this.id)">'+
-				                    '   Deseja realizar o feedback do dia?'+
+				                    '   Feedback do dia'+
 				                    '</button></div>';
         }
         

@@ -1,3 +1,12 @@
+function deleteToday(){
+    
+    var lista = JSON.parse(localStorage.getItem("list"));
+    var hoje = moment().format("YYYY-MM-DD 00:00:00");;   
+
+    delete lista[1][hoje];
+    localStorage.setItem("list", JSON.stringify(lista));
+}
+
 function deleteIndex(string, index){
         
     var lista = JSON.parse(localStorage.getItem("list"));

@@ -10,7 +10,15 @@ function send_message(index, origem){
 	if(internet()){
         
         var list_pendente = JSON.parse(localStorage.getItem("pendente"));
-        var resposta_request = webservice("resposta", {"array_requisicao": JSON.stringify(list_pendente[index-1])});
+        
+        if (list_pendente[index-1]["formulario"]["formulario_id"] > 0){
+            // requisição para formulário de visitas
+            var resposta_request = webservice("resposta", {"array_requisicao": JSON.stringify(list_pendente[index-1])});
+        } else {
+            // requisição para formulário de feedback
+            var resposta_request = webservice("feedback", {"array_requisicao": JSON.stringify(list_pendente[index-1])});
+        }
+        
 //        navigator.notification.alert(JSON.stringify(list_pendente[index-1]));
 //        navigator.notification.alert(JSON.stringify(resposta_request));
 
@@ -27,7 +35,8 @@ function send_message(index, origem){
             }
             
             cordova.plugin.pDialog.dismiss();
-            navigator.notification.alert("Formulário enviado.","","Sucesso!","OK");  
+            navigator.notification.alert("Formulário enviado.","","Sucesso!","OK");
+            
         } else {
             $("#btn_pendente").removeClass("hidden");
             cordova.plugin.pDialog.dismiss();

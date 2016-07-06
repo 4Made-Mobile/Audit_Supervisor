@@ -109,6 +109,11 @@ function geolocationSuccess(position){
 
             send_message(JSON.parse(localStorage.getItem("pendente")).length); // enviando a última posição (formulário atual)
             deleteIndex("visita", aux[0]);  // deletando a visita respondida
+            
+            if (aux[0]==0){
+                deleteToday();
+            }
+            
             list_generator();
             activate_page("#mainpage");
         }
