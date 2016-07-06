@@ -8,13 +8,13 @@
 		</h2>
 	</div>
 <br/>
-	<div class="row">
-			<input type="hidden" value="" id="id-formulario" /> 
+	<div class="row">			
+			<input type="hidden" value="{{$id_formulario}}" id="id-formulario" /> 
 			<div class="col-lg-2">
 				<label for="nome-formulario"><p class="center">Nome do Formulário</p></label>
 			</div>
 			<div class="col-lg-8">
-				<input class="form-control" id="nome-formulario" name="nome-formulario" type="text"/>
+				<input value="{{$descricao}}" class="form-control" id="nome-formulario" name="nome-formulario" type="text"/>
 			</div>
 	</div>
 
@@ -128,8 +128,8 @@
 	// 5 - adiciona-pergunta
 	$('#adiciona-pergunta').click(adicionaPergunta);
 
-	// atualiza a lista
-	$(atualizaLista);
+	var id_formulario = $("#id-formulario").val();
+	$(atualizaLista(id_formulario));
 </script>
 
 @endsection

@@ -45,12 +45,10 @@ Route::post('/formulario/adiciona/', 'FormularioController@adiciona');
 Route::get('/formulario/finalizar/', 'FormularioController@finalizar');
 Route::get('/formulario/lista-pergunta/', 'FormularioController@listaPergunta');
 Route::get('/formulario/remove-pergunta/', 'FormularioController@removePergunta');
-//Route::get('/formulario/lista-geral/', 'FormularioController@listaGeral');
-//Route::post('/formulario/adiciona', 'FormularioController@adiciona');
-//Route::post('/formulario/altera', 'FormularioController@altera');
-//Route::get('/formulario/mostra/{id}', 'FormularioController@mostra');
-//Route::get('/formulario/edita/{id}', 'FormularioController@edita');
-//Route::get('/formulario/remove/{id}', 'FormularioController@remove');
+Route::get('/formulario/cria-formulario/', 'FormularioController@criaFormulario');
+Route::get('/formulario/cria-pergunta/', 'FormularioController@criaPergunta');
+Route::get('/formulario/lista-geral/', 'FormularioController@listaGeral');
+Route::get('/formulario/remove/{id}', 'FormularioController@remove');
 
 // Visitas Base e Pesquisa
 Route::get('/visita/novo/', 'VisitaController@novo');
