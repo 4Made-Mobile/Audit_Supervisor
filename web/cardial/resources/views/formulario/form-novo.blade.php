@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
 
-<form>
+<form autocomplet="off">
 	<div class="row">
 		<h2 class="centered">
 			<p>Cadastro de formulário</p>
@@ -27,15 +27,13 @@
 	</h3>
 
 	<div class="row">
-		<table id="lista-pergunta" class="table">
+		<table id="lista-pergunta" class="table table-striped">
 			<thead id="lista-head-pergunta">
 				<tr>
 					<td>Descrição</td>
 					<td>Tipo</td>
 					<td>Vísivel</td>
 					<td>Ordem</td>
-					<td></td>
-					<td></td>
 					<td></td>
 				</tr>
 			</thead>
@@ -129,6 +127,9 @@
 
 	// 5 - adiciona-pergunta
 	$('#adiciona-pergunta').click(adicionaPergunta);
+
+	// atualiza a lista
+	$(atualizaLista);
 </script>
 
 @endsection

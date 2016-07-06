@@ -81,7 +81,7 @@ var adicionaPergunta = function(event){
 			// cria um formulario novo
 		}
 
-		$(atualizaLista);
+		$(atualizaLista(1));
 
 	}else{
 		$($select).each(function(){
@@ -90,23 +90,57 @@ var adicionaPergunta = function(event){
 	}
 }
 
+var removePergunta = function(){
+	$(".pergunta-id").each(function(){
+		$(this).click(function(){
+			var pergunta_id = $(this).find('> a').attr('id');
+			$.ajax({
+				url : 'http://localhost:8000/formulario/remove-pergunta/',
+				data : {id : 1},
+				contentType: "application/json",
+				processdata: true,
+				dataType : 'JSON',
+				success : function(data){
+					console.log(data);
+				}
+			});
+			this.remove();
+		});
+	});
+}
+
+var constroiTabelaPerguntas = function(data){
+
+	$(data).each(function(){
+		var $tr = $("#lista-body-pergunta").append("<tr>");
+		$($tr).append("<td> " + this.descricao +"</td>");
+		$($tr).append("<td> " + this.tipo +"</td>");
+		$($tr).append("<td> " + this.visivel +"</td>");
+		$($tr).append("<td> " + this.ordem +"</td>");
+		$($tr).append("<td class='pergunta-id'>" + "<a id='" + this.pergunta_id + "' href='#'><i class='fa fa-times' aria-hidden='true'></i></a>" + "</td>");
+	})
+
+	$(removePergunta());
+}
+
 var atualizaLista = function(id_formulario){
 	// 1 - Limpa a tabela 
-	var td = $(atualizaLista).find("td");
-	$(td).each(function(){
-		console.log("Hello World");
+	var tds = $("#lista-body-pergunta").find("> td");
+	
+	$(tds).each(function(){
+		$(this).remove();
 	});
 
 	// requisição ajax para construir a página o_o"
 	$.ajax(
 			{
 				url : 'http://localhost:8000/formulario/lista-pergunta/',
-				data : {'id_formulario' : id_formulario},
+				data : {id : 1},
 				contentType: "application/json",
 				processdata: true,
 				dataType : 'JSON',
 				success : function(data){
-					console.log("Olá, mundo")
+					constroiTabelaPerguntas(data);
 				}
 			});
 

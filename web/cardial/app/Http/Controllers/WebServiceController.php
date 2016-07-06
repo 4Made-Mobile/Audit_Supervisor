@@ -86,6 +86,7 @@ class WebServiceController extends Controller {
                                'pergunta.tipo')->
                         where('pergunta.visivel', 'S')->
                         get();
+                
 
                 // data das últimas visitas
                 $ultima_visita = Visita::
