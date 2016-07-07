@@ -6,11 +6,20 @@
         /*padding-top: 10px;*/
     }
 </style>
-<div class="row novo-cliente">
-    <a href="/formulario/novo/">
-        <button class="btn btn-primary">Novo Formulario</button>
-    </a>
-</div>
+<form action="/formulario/adiciona/">
+    <div class="row">           
+        <input type="hidden" value="" id="id-formulario" /> 
+        <div class="col-lg-2">
+            <label for="nome-formulario"><p class="center"><h4>Nome do Formulário</h4></p></label>
+        </div>
+        <div class="col-lg-6">
+            <input value="" class="form-control" id="nome-formulario" name="descricao" type="text"/>
+        </div>
+        <div class="col-lg-1">
+            <input class="btn btn-primary" type="submit" value="Adicionar"/>
+        </div>
+    </div>
+</form>
 <div class="row">
     <table class="table table-hover table-responsive">
         <thead>
@@ -25,7 +34,7 @@
             <tr>
                 <td>{{$item->descricao}}</td>
                 <td>
-                    <a href="/formulario/novo?{{$item->id}}">
+                    <a href="/formulario/novo?id={{$item->id}}">
                         <span class="fa fa-edit">
                         </span></a>
                 </td>

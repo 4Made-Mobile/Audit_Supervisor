@@ -1,7 +1,7 @@
 @extends('layout.app')
 @section('content')
 
-<form autocomplet="off">
+<form autocomplete="off">
 	<div class="row">
 		<h2 class="centered">
 			<p>Cadastro de formulário</p>
@@ -100,7 +100,7 @@
 		</div>
 
 		<div class="col-lg-2">
-			<button id="cancelar" class="btn btn-danger">Cancelar</button>
+			<button id="cancelar" class="btn btn-danger">Voltar</button>
 		</div>
 	</div>
 </form>

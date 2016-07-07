@@ -46,9 +46,11 @@
                             <li><a href="/cliente/lista-geral/">Clientes</a></li>
                             <li><a href="/supervisor/lista-geral/">Supervisores</a></li>
                             <li><a href="/vendedor/lista-geral/">Vendedor</a></li>
-                            <li><a href="/pergunta/lista-geral/">Perguntas</a></li>
+                            <li><a href="/formulario/lista-geral/">Formulário</a></li>
                             <li><a href="/visita/lista-geral/">Visitas</a></li>
                             <li><a href="/usuario/lista-geral/">Usuarios</a></li>
+                            <li><hr></li>
+                            <li><a href="/feedback/lista-geral">Feedback</li>
                         </ul>
                     </div>
                     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

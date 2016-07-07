@@ -1,35 +1,57 @@
 var finalizaFormulario = function(event){
 	event.preventDefault();
-	var id_formulario = $("#id-formulario").val();
-	var pode_finalizar = id_formulario == "";
+	var descricaoDoFormulario = $("#nome-formulario").val();
+	var pode_finalizar = descricaoDoFormulario == "";
 	if(pode_finalizar){
 		swal("Oops...", "O formulário está vazio!", "error");
+	}else{
+		var id_formulario = $("#id-formulario").val();
+		var nao_existe = id_formulario == '';
+		var descricaoDoFormulario = $("#nome-formulario").val();
+		if(nao_existe){
+
+			$.ajax({
+				url : 'http://supervisor.cardealdistribuidora.com.br/formulario/cria-formulario/',
+				contentType: "application/json",
+				data: {nome_formulario : descricaoDoFormulario},
+				processdata: true,
+				dataType : 'JSON',
+				success : function(data){
+					$("#id-formulario").val(data);
+					swal("Formulário criado com sucesso");
+				},
+				error : function(){
+					swal("Erro ao criar o formulário");
+				}
+
+			});
+
+			id_formulario = $("#id-formulario").val();
+		}else{
+			$.ajax({
+				url : 'http://supervisor.cardealdistribuidora.com.br/formulario/altera-formulario/',
+				contentType: "application/json",
+				data: {
+					   nome_formulario : descricaoDoFormulario,
+					   id : id_formulario
+					  },
+				processdata: true,
+				dataType : 'JSON',
+				success : function(data){
+					window.location.href = "/formulario/lista-geral/";
+				},
+				error : function(){
+					window.location.href = "/formulario/lista-geral/";
+				}
+			});
+		}
 	}
 }
 
 
 var cancelarFormulario = function(event){
 	event.preventDefault();
-	
-	swal({
-		  title: "Você tem certeza?",
-		  text: "Todos os dados serão perdidos!",
-		  type: "warning",
-		  showCancelButton: true,
-		  confirmButtonColor: "#DD6B55",
-		  confirmButtonText: "Sim",
-		  cancelButtonText: "Não",
-		  closeOnConfirm: false,
-		  closeOnCancel: false
-		},
-		function(isConfirm){
-		  if (isConfirm) {
-		    swal("Cancelado com sucesso", "Você será redirecionado.", "success");
-		    window.location.href = "/";
-		  }else{
-		  	swal("Cancelamento cancelado", "Very Good!!");
-		  }
-		});
+	window.location.href = "/formulario/lista-geral/";
 }
 
 var adicionaPergunta = function(event){
@@ -50,6 +72,8 @@ var adicionaPergunta = function(event){
 			validacao = false;
 		}else if(this.id== "pergunta-visivel" && !this.checked){
 			data.push('N');
+		}else if(this.id== "pergunta-visivel" && this.checked){
+			data.push('S');
 		}else if(this.id == "pergunta-ordem" && (texto == null || texto == "")){
 			data.push(0);
 			$(this).val('');
@@ -64,15 +88,18 @@ var adicionaPergunta = function(event){
 	if(validacao){
 		var id_formulario = $("#id-formulario").val();
 		var nao_existe = id_formulario == '';
+		var descricaoDoFormulario = $("#nome-formulario").val();
 		if(nao_existe){
 
 			$.ajax({
-				url : 'http://localhost:8000/formulario/cria-formulario/',
+				url : 'http://supervisor.cardealdistribuidora.com.br/formulario/cria-formulario/',
 				contentType: "application/json",
+				data: {nome_formulario : descricaoDoFormulario},
 				processdata: true,
 				dataType : 'JSON',
 				success : function(data){
 					$("#id-formulario").val(data);
+					swal("Formulário criado com sucesso");
 				},
 				error : function(){
 					swal("Erro ao criar o formulário");
@@ -95,13 +122,13 @@ var adicionaPergunta = function(event){
 
 var cadastraPergunta = function(data){
 	$.ajax({
-				url : 'http://localhost:8000/formulario/cria-pergunta/',
+				url : 'http://supervisor.cardealdistribuidora.com.br/formulario/cria-pergunta/',
 				data : {dados : data},
 				contentType: "application/json",
 				processdata: true,
 				dataType : 'JSON',
 				success : function(data){
-					console.log(data);
+					swal("sucesso");
 				},
 				error: function(){
 					swal('Erro');
@@ -114,7 +141,7 @@ var removePergunta = function(){
 		$(this).click(function(){
 			var pergunta_id = $(this).find('> a').attr('id');
 			$.ajax({
-				url : 'http://localhost:8000/formulario/remove-pergunta/',
+				url : 'http://supervisor.cardealdistribuidora.com.br/formulario/remove-pergunta/',
 				data : {id : pergunta_id},
 				contentType: "application/json",
 				processdata: true,
@@ -158,7 +185,7 @@ var atualizaLista = function(id_formulario){
 	// requisição ajax para construir a página o_o"
 	$.ajax(
 			{
-				url : 'http://localhost:8000/formulario/lista-pergunta/',
+				url : 'http://supervisor.cardealdistribuidora.com.br/formulario/lista-pergunta/',
 				data : {id : id_formulario},
 				contentType: "application/json",
 				processdata: true,
