@@ -67,3 +67,8 @@ Route::get('/webservice/respostas/', 'WebServiceController@resposta');
 Route::get('/hora/', function(){
 	return date('Y-m-d');
 });
+
+// FEEDBACK
+Route::get('/feedback/lista-geral', 'FeedbackController@listaGeral');
+Route::get('/feedback/edita', 'FeedbackController@edita');
+Route::get('/feedback/relatorio', 'FeedbackController@relatorio');
