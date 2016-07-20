@@ -70,7 +70,7 @@ class WebServiceController extends Controller {
                                 'vendedor.nome AS vendedor_nome',
                                 'formulario.id AS formulario_id')->
                         where('visita_base.supervisor_id', $supervisor_id)->
-                        where('visita.situacao','><' ,'CONCLUIDO')->
+                        where('visita.situacao','!=' ,'CONCLUIDO')->
                         where('visita.data_inicial', '>', date('Y-m-d', strtotime("-1 days")))->
                         where('visita.data_inicial', '<=', date('Y-m-d', strtotime("+29 days")))->
                         get();
