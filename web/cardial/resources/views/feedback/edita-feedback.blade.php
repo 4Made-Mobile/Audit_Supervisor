@@ -1,0 +1,1 @@
+<!-- detalhes de cada resposta -->

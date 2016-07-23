@@ -10,6 +10,7 @@ use cardial\Supervisor;
 use cardial\VisitaBase;
 use cardial\Visita;
 use cardial\Pergunta;
+use cardial\RespostaFeedback;
 use DB;
 
 class WebServiceController extends Controller {
@@ -134,24 +135,6 @@ class WebServiceController extends Controller {
 
     public function resposta() {
 
-        // forma que os dados chegam
-        /*array_requisicao = {
-                            "supervisor_id": id, 
-                            "chave": key,
-                            "formulario": array_formulario
-                            };
-
-        array_formulario = {"visita_id": id,
-                            "formulario_id": id,
-                            "gps_inicial": gps_inicial,
-                            "gps_final": gps_final,
-                            "data_inicio": data_inicial,
-                            "data_fim": data_final,
-                            "respostas": array_resposta
-                            };
-
-        array_resposta = {"descricao": resposta, "pergunta_id": pergunta_id}; */
-
         // verifica se todos os valores estão preenchidos
         $dados_recebido = json_decode(Request::input('array_requisicao'));
 
@@ -188,9 +171,77 @@ class WebServiceController extends Controller {
 
             $respostas = $formulario->respostas;
             foreach($respostas AS $res){
+                // Cria o campo resposta
                 Resposta::create(array(
                         'descricao' => $res->descricao,
                         'pergunta_id' => $res->pergunta_id,
+                        'visita_id' => $visita->id
+                    ));
+            }
+
+            return json_encode("true");
+        }
+
+        return json_encode("false");
+    }
+
+    public function feedback() {
+
+        // verifica se todos os valores estão preenchidos
+        $dados_recebido = json_decode(Request::input('array_requisicao'));
+
+        if(empty($dados_recebido) || empty($dados_recebido->supervisor_id) || empty($dados_recebido->chave) || empty($dados_recebido->formulario))
+            return json_encode(array("false"));
+
+        // verifica se o formulário está okay
+        $formulario = $dados_recebido->formulario;
+        if(empty($formulario->respostas))
+            return json_encode(array("false"));
+
+        // verifica se a chave dos dados está correta
+        $supervisor_id = $dados_recebido->supervisor_id;
+        $chave = $dados_recebido->chave;
+
+        $usuario = Usuario::find($supervisor_id);
+        // se não encontrar o ID retorna falso
+        if (empty($usuario))
+            return json_encode(array("false"));
+
+        $requisicao_valida = $usuario->chave == $dados_recebido->chave;
+        if ($requisicao_valida) {
+            // adiciona o gps inicial e final. // adiciona hora inicial e final
+
+            /** Diferenção entre feedback e visita
+                Quando se recebe um requisição de feedback
+                O servidor cria uma nova linha na tabela feedback
+                E preenche ela com os dados
+            */
+
+            // instancia um novo objeto
+            $feedback = new Feedback();
+
+            // Guarda todos os dados
+            $feedback->data_inicio = date("d-m-Y");
+            $feedback->data_fim = date("d-m-Y");
+            $feedback->pesquisa_inicio = $formulario->data_inicio;
+            $feedback->pesquisa_fim = $formulario->data_fim;
+            $feedback->gps_inicio = $formulario->gps_inicial;
+            $feedback->gps_fim = $formulario->gps_final;
+            $feedback->data_final = date('Y-m-d');
+            $feedback->situacao = 'CONCLUIDO';
+            $feedback->formulario_id = intVal(0);
+            $feedback->supervisor_id = $supervisor_id;
+
+            // armazena no banco de dados
+            $feedback->save();
+
+            // salva todos as resposta_feedback uma por uma
+            $respostas = $formulario->respostas;
+            foreach($respostas AS $res){
+                RespostaFeedback::create(array(
+                        'descricao' => $res->descricao,
+                        'pergunta_id' => $res->pergunta_id,
+                        'feedback_id' => $feedback->id
                     ));
             }
 

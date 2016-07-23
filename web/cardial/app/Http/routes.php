@@ -1,18 +1,17 @@
 <?php
+// Configura o horário do PHP para a hora de SP.
 date_default_timezone_set('America/Sao_Paulo');
-// AUTH
+
+// Rotas da Autenticação
 Route::get('/login', 'LoginController@form');
 Route::post('/login', 'LoginController@login');
 Route::get('/verifica', 'LoginController@verifica');
 Route::get('/logout', 'LoginController@logout');
 
-//HOME
+// Rotas superficiais
 Route::get('/', 'HomeController@index');
-Route::get('/suporte', function() {
-    return "suporte";
-});
 
-// CLIENTE
+// Rotas relacionadas ao cliente
 Route::get('/cliente/novo/', 'ClienteController@novo');
 Route::get('/cliente/lista-geral/', 'ClienteController@listaGeral');
 Route::post('/cliente/adiciona', 'ClienteController@adiciona');
@@ -21,7 +20,7 @@ Route::get('/cliente/mostra/{id}', 'ClienteController@mostra');
 Route::get('/cliente/edita/{id}', 'ClienteController@edita');
 Route::get('/cliente/remove/{id}', 'ClienteController@remove');
 
-// SUPERVISORES
+// Rotas relacionadas ao supervisor
 Route::get('/supervisor/novo/', 'SupervisorController@novo');
 Route::get('/supervisor/lista-geral/', 'SupervisorController@listaGeral');
 Route::post('/supervisor/adiciona', 'SupervisorController@adiciona');
@@ -30,7 +29,7 @@ Route::get('/supervisor/mostra/{id}', 'SupervisorController@mostra');
 Route::get('/supervisor/edita/{id}', 'SupervisorController@edita');
 Route::get('/supervisor/remove/{id}', 'SupervisorController@remove');
 
-// VENDEDORES
+// Rotas relacionadas ao vendedor
 Route::get('/vendedor/novo/', 'VendedorController@novo');
 Route::get('/vendedor/lista-geral/', 'VendedorController@listaGeral');
 Route::post('/vendedor/adiciona', 'VendedorController@adiciona');
@@ -39,7 +38,7 @@ Route::get('/vendedor/mostra/{id}', 'VendedorController@mostra');
 Route::get('/vendedor/edita/{id}', 'VendedorController@edita');
 Route::get('/vendedor/remove/{id}', 'VendedorController@remove');
 
-// FORMULARIO
+// Rotas relacionadas ao formulário
 Route::get('/formulario/novo/', 'FormularioController@novo');
 Route::get('/formulario/adiciona/', 'FormularioController@adiciona');
 Route::get('/formulario/finalizar/', 'FormularioController@finalizar');
@@ -51,6 +50,11 @@ Route::get('/formulario/cria-pergunta/', 'FormularioController@criaPergunta');
 Route::get('/formulario/lista-geral/', 'FormularioController@listaGeral');
 Route::get('/formulario/remove/{id}', 'FormularioController@remove');
 
+// FEEDBACK
+Route::get('/feedback/lista-geral', 'FeedbackController@listaGeral');
+Route::get('/feedback/edita', 'FeedbackController@edita');
+Route::get('/feedback/relatorio', 'FeedbackController@relatorio');
+
 // Visitas Base e Pesquisa
 Route::get('/visita/novo/', 'VisitaController@novo');
 Route::get('/visita/lista-geral/', 'VisitaController@listaGeral');
@@ -60,15 +64,11 @@ Route::get('/visita/pesquisa/{id}', 'VisitaController@pesquisa');
 Route::get('/visita/remove/{id}', 'VisitaController@remove');
 Route::get('/visita/relatorio/{id}', 'VisitaController@relatorio');
 
-// WEBSERVICE
+##################################################
+#### CUIDADO AO MEXER! PODE PARAR O APLICATIVO ###
+##################################################
+
 Route::get('/webservice/login/', 'WebServiceController@verificaLogin');
 Route::get('/webservice/lista-visita/', 'WebServiceController@listaVisita');
 Route::get('/webservice/respostas/', 'WebServiceController@resposta');
-Route::get('/hora/', function(){
-	return date('Y-m-d');
-});
-
-// FEEDBACK
-Route::get('/feedback/lista-geral', 'FeedbackController@listaGeral');
-Route::get('/feedback/edita', 'FeedbackController@edita');
-Route::get('/feedback/relatorio', 'FeedbackController@relatorio');
+Route::get('/webservice/feedback/', 'WebServiceController@feedback');

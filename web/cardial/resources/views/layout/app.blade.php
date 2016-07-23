@@ -50,7 +50,7 @@
                             <li><a href="/visita/lista-geral/">Visitas</a></li>
                             <li><a href="/usuario/lista-geral/">Usuarios</a></li>
                             <li><hr></li>
-                            <li><a href="/feedback/lista-geral">Feedback</li>
+                            <li><a href="/feedback/lista-geral">Feedback</a></li>
                         </ul>
                     </div>
                     <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
