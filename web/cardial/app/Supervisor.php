@@ -10,4 +10,8 @@ class Supervisor extends Model {
     public $timestamps = false;
     protected $guarded = ['id'];
 
+    public function Usuario() {
+        return $this->hasOne('cardial\Usuario', 'id', 'id');
+    }
+
 }

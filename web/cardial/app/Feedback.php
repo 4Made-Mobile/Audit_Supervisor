@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Feedback extends Model
 {
-    protected $table = "formulario";
+    protected $table = "feedback";
     public $timestamps = false;
     protected $guarded = ['id'];
 }

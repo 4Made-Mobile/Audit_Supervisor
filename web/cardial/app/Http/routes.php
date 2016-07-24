@@ -29,6 +29,13 @@ Route::get('/supervisor/mostra/{id}', 'SupervisorController@mostra');
 Route::get('/supervisor/edita/{id}', 'SupervisorController@edita');
 Route::get('/supervisor/remove/{id}', 'SupervisorController@remove');
 
+
+// Rotas relacionadas ao usuário->supervisor
+Route::get('/usuario/lista-geral/', 'UsuarioController@listaGeral');
+Route::post('/usuario/altera', 'UsuarioController@altera');
+Route::get('/usuario/edita/{id}', 'UsuarioController@edita');
+Route::get('/usuario/imei/{id}', 'UsuarioController@imei');
+
 // Rotas relacionadas ao vendedor
 Route::get('/vendedor/novo/', 'VendedorController@novo');
 Route::get('/vendedor/lista-geral/', 'VendedorController@listaGeral');

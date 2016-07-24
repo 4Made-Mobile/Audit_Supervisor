@@ -11,7 +11,7 @@ class Usuario extends Model {
     protected $guarded = ['id'];
 
     public function Supervisor() {
-        $this->hasOne('/cardial/Supervisor', 'id', 'id');
+        return $this->hasOne('cardial\Supervisor', 'id', 'id');
     }
 
 }

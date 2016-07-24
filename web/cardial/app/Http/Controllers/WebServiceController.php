@@ -11,6 +11,8 @@ use cardial\VisitaBase;
 use cardial\Visita;
 use cardial\Pergunta;
 use cardial\RespostaFeedback;
+use cardial\Feedback;
+
 use DB;
 
 class WebServiceController extends Controller {
@@ -71,7 +73,7 @@ class WebServiceController extends Controller {
                                 'vendedor.nome AS vendedor_nome',
                                 'formulario.id AS formulario_id')->
                         where('visita_base.supervisor_id', $supervisor_id)->
-                        where('visita.situacao','!=' ,'CONCLUIDO')->
+                        where('visita.situacao','<>' ,'CONCLUIDO')->
                         where('visita.data_inicial', '>', date('Y-m-d', strtotime("-1 days")))->
                         where('visita.data_inicial', '<=', date('Y-m-d', strtotime("+29 days")))->
                         get();
@@ -221,15 +223,12 @@ class WebServiceController extends Controller {
             $feedback = new Feedback();
 
             // Guarda todos os dados
-            $feedback->data_inicio = date("d-m-Y");
-            $feedback->data_fim = date("d-m-Y");
             $feedback->pesquisa_inicio = $formulario->data_inicio;
             $feedback->pesquisa_fim = $formulario->data_fim;
-            $feedback->gps_inicio = $formulario->gps_inicial;
-            $feedback->gps_fim = $formulario->gps_final;
-            $feedback->data_final = date('Y-m-d');
+            $feedback->geolocalizacao_inicio = $formulario->gps_inicial;
+            $feedback->geolocalizacao_fim = $formulario->gps_final;
             $feedback->situacao = 'CONCLUIDO';
-            $feedback->formulario_id = intVal(0);
+            $feedback->formulario_id = 0;
             $feedback->supervisor_id = $supervisor_id;
 
             // armazena no banco de dados
@@ -241,7 +240,7 @@ class WebServiceController extends Controller {
                 RespostaFeedback::create(array(
                         'descricao' => $res->descricao,
                         'pergunta_id' => $res->pergunta_id,
-                        'feedback_id' => $feedback->id
+                        'feedback_id' => $feedback->id,
                     ));
             }
 
