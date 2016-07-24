@@ -31,16 +31,41 @@ class VisitaController extends Controller {
     }
 
     public function mostra($id) {
-        $visitas = Visita::all()->where('visita_id', intval($id));
+        
+        // primeiro pega todas perguntas do formulário
+        $perguntas = VisitaBase::
+                        join('formulario', 'visita_base.formulario_id', '=', 'formulario.id')->
+                        join('pergunta_formulario', 'formulario.id', '=', 'pergunta_formulario.formulario_id')->
+                        join('pergunta', 'pergunta_formulario.pergunta_id', '=', 'pergunta.id')->
+                        select('pergunta.descricao')->
+                        get();
 
-        foreach ($visitas as $key => $item) {
-            $visitas[$key]->visitaBase = VisitaBase::find($item->visita_id);
-            $visitas[$key]->visitaBase->vendedor = Vendedor::find($visitas[$key]->visitaBase->vendedor_id);
-            $visitas[$key]->visitaBase->cliente = Cliente::find($visitas[$key]->visitaBase->cliente_id);
-            $visitas[$key]->visitaBase->supervisor = Supervisor::find($visitas[$key]->visitaBase->supervisor_id);
+        // agora pega o nome do supervisor, vendedor e a data de todas as visitas
+        $visitas = VisitaBase::
+                        join('supervisor', 'visita_base.supervisor_id', '=', 'supervisor.id')->
+                        join('vendedor', 'visita_base.vendedor_id', '=', 'vendedor.id')->
+                        join('cliente', 'visita_base.cliente_id', '=', 'cliente.id')->
+                        join('visita', 'visita_base.id', '=', 'visita.visita_id')->
+                        select('supervisor.nome AS supervisor',
+                               'vendedor.nome AS vendedor',
+                               'cliente.razao_social AS cliente',
+                               'visita.data_final',
+                               'visita.id')->
+                        where('visita.situacao','=' ,'CONCLUIDO')->
+                        where('visita.data_inicial', '<', date('Y-m-d', strtotime("+1 days")))->
+                        get();
+
+        $cliente = $visitas[0]['cliente'];
+
+        foreach ($visitas as $key => $value) {
+            $respostas = Resposta::all()->where('visita_id',$value['id']);
+            $visitas[$key]['respostas'] = $respostas;
         }
 
-        return view('visita.mostra')->with('visitas', $visitas);
+        return view('visita.mostra')
+                        ->with('perguntas', $perguntas)
+                        ->with('visitas', $visitas)
+                        ->with('cliente', $cliente);
     }
 
     public function relatorio($id) {

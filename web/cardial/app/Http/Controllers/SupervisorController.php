@@ -3,6 +3,8 @@
 namespace cardial\Http\Controllers;
 
 use cardial\Supervisor;
+use cardial\Usuario;
+
 use Request;
 use cardial\Http\Requests\SupervisorRequest;
 
@@ -13,7 +15,33 @@ class SupervisorController extends Controller {
     }
 
     public function adiciona(SupervisorRequest $request) {
-        Supervisor::create($request->all());
+
+        // verifica se o usuário já existe
+        $login = Request::input('login');
+        $usuario = Usuario::all()->where('login', $login)->first();
+        if(!empty($usuario) && $usuario->id != null){
+            return redirect()
+                        ->action('SupervisorController@novo')
+                        ->withInput(array('erro' => 'Login já existe'));
+        }
+
+        // criando array do supervisor
+        $dados_supervisor = array(
+                                'nome' => Request::input('nome'),
+                                'email' => Request::input('email'),
+                                'telefone' => Request::input('telefone'));
+
+        // cadastrando o supervisor
+        $supervisor = Supervisor::create($dados_supervisor);
+
+        $usuario = new Usuario();
+        $usuario->id = $supervisor->id;
+        $usuario->login = strtolower(Request::input('login'));
+        $usuario->senha = md5(strtolower(Request::input('login')));
+
+        //salvando no banco de dados
+        $usuario->save();
+
         return redirect()
                         ->action('SupervisorController@listaGeral')
                         ->withInput(array('sucesso' => 'Supervisor cadastro com sucesso'));
@@ -48,6 +76,10 @@ class SupervisorController extends Controller {
     public function remove($id) {
         $supervisor = Supervisor::find($id);
         $supervisor->delete();
+
+        $usuario = Usuario::find($id);
+        $usuario->delete();
+
         return redirect()
                         ->action('SupervisorController@listaGeral')
                         ->withInput(array('sucesso' => 'Supervisor removido com sucesso'));

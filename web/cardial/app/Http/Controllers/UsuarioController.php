@@ -2,9 +2,8 @@
 
 namespace cardial\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Request;
 
-use cardial\Http\Requests;
 use cardial\Usuario;
 use cardial\Supervisor;
 
@@ -17,7 +16,7 @@ class UsuarioController extends Controller
 		return view('usuario.lista-geral')->with('usuarios', $usuarios);
 	}
 
-		// lista-geral das funções
+	// lista-geral das funções
 	public function imei($id){		
 		
 		// verifica se o id não está nulo
@@ -31,16 +30,28 @@ class UsuarioController extends Controller
 		return redirect()->action('UsuarioController@listaGeral');
 	}
 
-		// lista-geral das funções
+	// lista-geral das funções
 	public function edita($id){		
-		$usuarios = Usuario::all();
-		return view('usuario.lista-geral')->with('usuarios', $usuarios);
+		$usuario = Usuario::find($id);
+		return view('usuario.edit-usuario')->with('usuario', $usuario);
 	}
 
-		// lista-geral das funções
-	public function altera(){		
-		$usuarios = Usuario::all();
-		return view('usuario.lista-geral')->with('usuarios', $usuarios);
+	// lista-geral das funções
+	public function altera(){	
+		
+		$id = Request::input('id');	
+		$senha = Request::input('senha');
+
+		$usuario = Usuario::find($id);
+
+		if(!empty($senha)){
+			$usuario->senha = md5($senha);
+		}
+
+		$usuario->login = Request::input('login');
+		$usuario->save();
+
+		return redirect()->action('UsuarioController@listaGeral');
 	}
 
 

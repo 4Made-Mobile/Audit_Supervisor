@@ -7,7 +7,6 @@
                 <td>Id</td>
                 <td>Supervisor</td>
                 <td>Login</td>
-                <td>Redefinir Senha</td>
                 <td>Redefinir IMEI</td>
             </tr>
         </thead>
@@ -18,13 +17,13 @@
                 <td>{{$item->supervisor->nome}}</td>
                 <td>{{$item->login}}</td>
                 <td>
-                    <a href="{{action('UsuarioController@edita', $item->id)}}">
-                        <span class="fa fa-danger"></span>
+                    <a href="{{action('UsuarioController@imei', $item->id)}}">
+                        <span class="fa fa-key"></span>
                     </a>
                 </td>
                 <td>
-                    <a href="{{action('UsuarioController@imei', $item->id)}}">
-                        <span class="fa fa-danger"></span>
+                    <a href="{{action('UsuarioController@edita', $item->id)}}">
+                        <span class="fa fa-edit"></span>
                     </a>
                 </td>
             </tr>

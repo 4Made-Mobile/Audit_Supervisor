@@ -1,44 +1,38 @@
 @extends('layout.app')
 @section('content')
-<style>
-    .novo{
-        padding-bottom: 20px;
-    }
-</style>
-
-<div class="container">
-    <div class="row">
-        <h1></h1>
-        <table class="table table-hover table-responsive">
-            <thead>
-                <tr>
-                    <td>Supervisor</td>
-                    <td>Vendedor</td>
-                    <td>Data estimada</td>
-                    <td>Data final</td>
-                    <td>Situação</td>
-                    <td></td>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($visitas as $item)
-                <?php
-                $tipo_visita = $item->situacao == 'ATRASADO' ? "class='danger'" : "";
-                ?>
-                <tr <?php echo $tipo_visita ?>>
-                    <td>{{$item->visitaBase->supervisor->nome}}</td>
-                    <td>{{$item->visitaBase->vendedor->nome}}</td>
-                    <td>{{$item->data_inicial}}</td>
-                    <td>{{$item->data_final}}</td>
-                    <td>{{$item->situacao}}</td>
-                    <td><i class="fa fa-wpforms"></i></td>
-                </tr>
+<div class="row">
+    <h1> <b>Visitas do cliente {{$cliente}} </b> </h1>
+    <table class="table table-bordered table-responsive">
+        <thead>
+            <tr>
+                <td>Data da Visita</td>
+                <td>Supervisor</td>
+                <td>Vendedor</td>
+                @foreach($perguntas as $item)
+                <td>
+                    {{$item['descricao']}}
+                </td>
                 @endforeach
-            </tbody>
-            <tfoot>
-            </tfoot>
-        </table>
-    </div>
+                <td></td>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($visitas as $item)
+            <tr>
+                <td>{{$item['data_final']}}</td>
+                <td>{{$item['supervisor']}}</td>
+                <td>{{$item['vendedor']}}</td>
+                @foreach($item['respostas'] AS $resposta)
+                    <td>{{$resposta->descricao}}</td>
+                @endforeach
+                <!-- <td><a href='#'>Detalhes</a></td> -->
+            </tr>
+            @endforeach
+        </tbody>
+        <tfoot>
+        </tfoot>
+    </table>
 </div>
+
 @endsection
 @include('layout.scripts')
