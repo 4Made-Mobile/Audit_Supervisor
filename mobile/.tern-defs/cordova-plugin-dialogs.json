@@ -5,7 +5,7 @@
             "beep": "fn(quantity: ?)"
         }
     },
-    "!plugin-version": "1.2.0",
+    "!plugin-version": "1.2.1",
     "window": {
         "navigator": {
             "notification": {

@@ -7,13 +7,16 @@
         "files": {}
     },
     "installed_plugins": {
+        "cordova-plugin-pdialog": {
+            "PACKAGE_NAME": "HelloCordova"
+        },
+        "org.hygieiasoft.cordova.uid": {
+            "PACKAGE_NAME": "HelloCordova"
+        },
         "cordova-plugin-device": {
             "PACKAGE_NAME": "HelloCordova"
         },
         "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "HelloCordova"
-        },
-        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "HelloCordova"
         },
         "cordova-plugin-geolocation": {
@@ -22,15 +25,16 @@
         "cordova-plugin-dialogs": {
             "PACKAGE_NAME": "HelloCordova"
         },
-        "cordova-plugin-pdialog": {
-            "PACKAGE_NAME": "HelloCordova"
-        },
-        "org.hygieiasoft.cordova.uid": {
-            "PACKAGE_NAME": "HelloCordova"
-        },
         "com.ionic.keyboard": {
+            "PACKAGE_NAME": "HelloCordova"
+        },
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "HelloCordova"
         }
     },
-    "dependent_plugins": {}
+    "dependent_plugins": {
+        "cordova-plugin-compat": {
+            "PACKAGE_NAME": "HelloCordova"
+        }
+    }
 }

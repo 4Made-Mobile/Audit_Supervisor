@@ -1,44 +1,4 @@
 {
-    "cordova-plugin-device": {
-        "source": {
-            "type": "local",
-            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-device"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-splashscreen": {
-        "source": {
-            "type": "local",
-            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-splashscreen"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-statusbar": {
-        "source": {
-            "type": "local",
-            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-statusbar"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-geolocation": {
-        "source": {
-            "type": "local",
-            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-geolocation"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
-    "cordova-plugin-dialogs": {
-        "source": {
-            "type": "local",
-            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-dialogs"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-pdialog": {
         "source": {
             "type": "git",
@@ -57,11 +17,59 @@
         "is_top_level": true,
         "variables": {}
     },
+    "cordova-plugin-device": {
+        "source": {
+            "type": "local",
+            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-device"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-splashscreen": {
+        "source": {
+            "type": "local",
+            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-splashscreen"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-geolocation": {
+        "source": {
+            "type": "local",
+            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-geolocation"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-compat": {
+        "source": {
+            "type": "local",
+            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-compat"
+        },
+        "is_top_level": false,
+        "variables": {}
+    },
+    "cordova-plugin-dialogs": {
+        "source": {
+            "type": "local",
+            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-dialogs"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
     "com.ionic.keyboard": {
         "source": {
             "type": "git",
             "url": "https://github.com/Telerik-Verified-Plugins/Keyboard",
             "subdir": "."
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "local",
+            "path": "/opt/intel/XDK/xdk/components/server/cordova/cordova-plugins/cordova-plugin-statusbar"
         },
         "is_top_level": true,
         "variables": {}

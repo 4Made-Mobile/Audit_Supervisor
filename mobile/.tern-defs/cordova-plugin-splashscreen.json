@@ -8,7 +8,7 @@
             }
         }
     },
-    "!plugin-version": "3.2.0",
+    "!plugin-version": "3.2.2",
     "navigator": {
         "splashscreen": "!modules.SplashScreen"
     }
